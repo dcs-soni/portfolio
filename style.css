@@ -1,0 +1,69 @@
+body {
+    margin: 0px;
+    padding: 0px
+}
+
+/* Body Header */
+header{
+    padding-top: 0.1rem;
+    background-image: url(img/bg-image.png);
+    height: 65vh;
+    opacity: 0.8;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+/************* Horizontal Lists N **********888*/
+.horizontal-list{
+    list-style: none;
+    padding-left: 0;
+    margin: 0px;
+}
+
+.horizontal-list li{
+    padding-top: 10px;
+    display: inline-block;
+    margin: 0px 8px 0px;
+    font-weight: 100;
+    font-size: 1.1rem;
+
+}
+
+.horizontal-list li a{
+    color: white;
+    text-decoration: none;
+    transition: color 0.9s border-bottom 4s;
+}
+
+.horizontal-list li a:hover{
+    color: lightgray;
+    /* text-decoration: underline; */
+    border-bottom: 1px solid black;
+
+}
+
+
+/* Name in the header */
+#name-social-container{
+    margin-top: 20vh;
+}
+
+#my-name{
+    font-size: 3rem;
+    letter-spacing: 0.1rem;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+
+/* Social icons */
+
+
+
+/* to center the text on pages */
+.text-center{
+    text-align: center;
+}
