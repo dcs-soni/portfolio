@@ -43,11 +43,8 @@ export default function Navigation() {
     <>
       <header className="fixed top-0 left-0 right-0 p-4 z-40 transition-all duration-300">
         <div className="container mx-auto px-6 flex items-center justify-between">
-          <Link href="#" className="text-lg font-medium">
-            <motion.span
-              className="font-display"
-              whileHover={{ color: "blue" }}
-              transition={{ duration: 0.2 }}>
+          <Link href="#" className="text-lg font-medium ">
+            <motion.span className="font-display text-zinc-600 dark:text-zinc-500 transition-colors hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500  dark:hover:text-transparent dark:hover:bg-clip-text darl:hover:bg-gradient-to-br dark:hover:from-blue-500 dark:hover:to-purple-500">
               DS
             </motion.span>
           </Link>
