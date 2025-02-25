@@ -2,6 +2,8 @@ import React from "react";
 import "./globals.css";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { Metadata } from "next";
+import Navigation from "@/components/Navigation";
+import { ThemeProvider } from "@/app/theme-provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({
@@ -31,7 +33,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-zinc-50 text-zinc-900 dark:text-zinc-100 dark:bg-zinc-950`}>
-        <main className="mx-auto"> {children}</main>
+        <ThemeProvider>
+          <Navigation />
+          <main className="mx-auto"> {children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );
