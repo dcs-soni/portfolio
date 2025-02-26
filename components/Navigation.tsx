@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll } from "motion/react";
 import { Menu, X, Command, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -16,6 +16,15 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { theme, setTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState<boolean>(false);
+
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    return scrollY.on("change", (latest) => {
+      setIsScrolled(latest > 50);
+    });
+  }, [scrollY]);
 
   useEffect(() => {
     setMounted(true);
@@ -32,7 +41,8 @@ export default function Navigation() {
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
-    { name: "Garden", href: "#digital-garden" },
+    { name: "Space", href: "#space" },
+    { name: "Contact", href: "#projects" },
   ];
 
   const toggleTheme = () => {
@@ -41,8 +51,13 @@ export default function Navigation() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 p-4 z-40 transition-all duration-300">
-        <div className="container mx-auto px-6 flex items-center justify-between">
+      <header
+        className={`fixed top-0 left-0 right-0 p-4 z-40 transition-all duration-300 ${
+          isScrolled
+            ? "py-3 backdrop-blur-lg bg-zinc-50/80 dark:bg-zinc-950/80"
+            : "py-5 bg-transparent"
+        }`}>
+        <div className="container mx-auto flex items-center justify-between">
           <Link href="#" className="text-lg font-medium ">
             <motion.span className="font-display text-zinc-600 dark:text-zinc-500 transition-colors hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500  dark:hover:text-transparent dark:hover:bg-clip-text darl:hover:bg-gradient-to-br dark:hover:from-blue-500 dark:hover:to-purple-500">
               DS
