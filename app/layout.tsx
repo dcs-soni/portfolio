@@ -4,6 +4,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import { ThemeProvider } from "@/app/theme-provider";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({
@@ -36,6 +37,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navigation />
           <main className="mx-auto"> {children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
