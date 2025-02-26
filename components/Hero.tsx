@@ -3,17 +3,26 @@
 import React from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Linkedin } from "lucide-react";
-import { GithubIcon } from "@/public/icons/Github";
-import { X } from "@/public/icons/X";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import { GitHubIcon } from "@/public/icons/Github";
+
+import { XIcon } from "@/public/icons/X";
+import { LinkedInIcon } from "@/public/icons/LinkedIn";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 relative">
+    <section className="min-h-screen flex items-start justify-center md:py-8 lg:py-8 ">
       <div className="max-w-5xl">
+        <motion.h1
+          className="text-2xl md:text-3xl text-zinc-100 mb-2 tracking-wider"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}>
+          Divyanshu Soni
+        </motion.h1>
+
         <motion.p
-          className="text-sm text-gray-400 mb-6 tracking-wider"
+          className="text-xs md:text-sm text-gray-400 mb-6 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}>
@@ -21,7 +30,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.h1
-          className="text-5xl md:text-7xl font-light leading-tight mb-8"
+          className="text-zinc-300 text-3xl md:text-5xl lg:text-7xl font-light leading-tight mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}>
@@ -35,7 +44,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.4 }}>
           <div className="space-y-4">
             <h3 className="text-xl font-light">Full-Stack Development</h3>
-            <p className="text-gray-400 leading-relaxed w-5/6">
+            <p className="text-gray-400 leading-relaxed">
               Specialized in React, Node.js, and cloud architecture. Building
               scalable solutions that make an impact.
             </p>
@@ -54,7 +63,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}>
-          <div className="space-y-4">
+          <div className="flex flex-wrap gap-4 justify-start items-center">
             <Link
               href="#contact"
               className="group inline-flex items-center justify-center text-sm border border-zinc-700 hover:text-zinc-100 hover:bg-zinc-900 dark:border-zinc-50 dark:hover:bg-white px-8 py-4 mr-2  dark:hover:text-black transition-colors duration-300 ">
@@ -63,20 +72,20 @@ export default function Hero() {
             </Link>
             <Link
               href="#digital-garden"
-              className="group inline-flex items-center justify-center text-sm px-8 py-4 bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300">
+              className="group inline-flex items-center justify-center text-sm px-8 py-4 mt-0 bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300 m-0">
               Explore my digital space
             </Link>
           </div>
 
-          <div className="flex justify-start md:justify-start space-x-6 space-y-4 items-end">
+          <div className="flex gap-2 items-center ">
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors m-0">
-              <GithubIcon />
+              className="text-gray-400 hover:text-white transition-colors mr-2 border border-white/20 px-2 py-2 rounded-lg">
+              <GitHubIcon />
               <span className="sr-only">GitHub</span>
             </motion.a>
 
@@ -86,8 +95,8 @@ export default function Hero() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 dark:text-zinc-100 transition-colors">
-              <X />
+              className="text-gray-400 dark:text-zinc-100 transition-colors mr-2  border border-white/20 px-2 py-2 rounded-lg">
+              <XIcon />
               <span className="sr-only">Twitter</span>
             </motion.a>
 
@@ -97,17 +106,30 @@ export default function Hero() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-700 dark:text-zinc-100 transition-colors">
-              <Linkedin
-                className="w-6 h-6"
-                stroke="currentColor"
-                viewBox="0 0 28 28"
-              />
+              className="text-zinc-700 dark:text-zinc-100 transition-colors mr-2  border border-white/20 px-2 py-2 rounded-lg">
+              <LinkedInIcon />
               <span className="sr-only">LinkedIn</span>
             </motion.a>
           </div>
         </motion.div>
       </div>
+      <motion.div
+        className="absolute hidden md:block md:bottom-10 left-1/2 transform -translate-x-1/2"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.8,
+          duration: 0.5,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}>
+        <Link
+          href="#about"
+          scroll={false}
+          className="flex items-center justify-center w-10 h-10 rounded-full">
+          <ArrowDown className="w-5 h-5" />
+        </Link>
+      </motion.div>
     </section>
   );
 }
