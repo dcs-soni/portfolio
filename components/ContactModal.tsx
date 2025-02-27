@@ -1,3 +1,4 @@
+import { URLs } from "@/constants/urls";
 import { Compose } from "@/public/icons/Compose";
 import { GitHubIcon } from "@/public/icons/Github";
 import { LinkedInIcon } from "@/public/icons/LinkedIn";
@@ -154,7 +155,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <div className="flex ml-2">
                   <div className="flex items-center gap-1 text-zinc-500 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-md px-2 py-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">
                     <motion.a
-                      href="https://calendly.com/divyanshusoni"
+                      href={URLs.cal}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center rounded-md "
@@ -185,7 +186,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </div>
               <div className="flex gap-3">
                 <motion.a
-                  href="https://linkedin.com/in/divyanshusoni"
+                  href={URLs.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 p-3 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
@@ -194,7 +195,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <LinkedInIcon />
                 </motion.a>
                 <motion.a
-                  href="https://github.com/divyanshusoni"
+                  href={URLs.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 p-3 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
@@ -203,7 +204,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <GitHubIcon />
                 </motion.a>
                 <motion.a
-                  href="https://twitter.com/divyanshusoni"
+                  href={URLs.x}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 p-3 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
