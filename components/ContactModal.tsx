@@ -66,7 +66,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </button>
 
             <div className="p-4">
-              <h2 className="text-2xl font-medium mb-6">Let's Connect</h2>
+              <h2 className="text-2xl font-medium mb-6">Let&apos;s Connect</h2>
             </div>
 
             {/* Email Section */}
