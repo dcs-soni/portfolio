@@ -41,7 +41,7 @@ export default function Navigation() {
     : "light";
 
   const links: LinksProps[] = [
-    { name: "Home", href: "#" },
+    { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },

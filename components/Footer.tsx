@@ -1,9 +1,10 @@
 "use client";
 
+import { URLs } from "@/constants/urls";
 import { GitHubIcon } from "@/public/icons/Github";
 import { LinkedInIcon } from "@/public/icons/LinkedIn";
 import { XIcon } from "@/public/icons/X";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Mail } from "lucide-react";
 
 export default function Footer() {
@@ -25,7 +26,7 @@ export default function Footer() {
               reach out!
             </p>
             <a
-              href="mailto:hello@johndoe.com"
+              href="mailto:divyanshusoni52@gmail.com"
               className="inline-flex items-center text-sm border border-white/20 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
               <Mail className="w-4 h-4 mr-2" />
               Say Hello
@@ -35,7 +36,7 @@ export default function Footer() {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              href="https://github.com"
+              href={URLs.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors border border-white/20 px-2 py-2 rounded-lg">
@@ -45,7 +46,7 @@ export default function Footer() {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              href="https://twitter.com"
+              href={URLs.x}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors border border-white/20 px-2 py-2 rounded-lg">
@@ -55,7 +56,7 @@ export default function Footer() {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              href="https://linkedin.com"
+              href={URLs.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors border border-white/20 px-2 py-2 rounded-lg">
@@ -69,8 +70,8 @@ export default function Footer() {
             Crafted with passion and code.
           </p>
           <motion.a
-            href=""
-            target="_blank"
+            href="#home"
+            target=""
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-white transition-colors text-sm"
             whileHover={{ scale: 1.05 }}>

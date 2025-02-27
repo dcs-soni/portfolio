@@ -1,17 +1,20 @@
-"use client";
-
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { GitHubIcon } from "@/public/icons/Github";
-
 import { XIcon } from "@/public/icons/X";
 import { LinkedInIcon } from "@/public/icons/LinkedIn";
+import { URLs } from "@/constants/urls";
+import ContactModal from "@/components/ContactModal";
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   return (
-    <section className="min-h-screen flex items-start justify-center md:py-8 lg:py-8 ">
+    <section
+      id="home"
+      className="min-h-screen flex items-start justify-center md:py-8 lg:py-14 ">
       <div className="max-w-5xl">
         <motion.h1
           className="text-2xl md:text-3xl text-zinc-100 mb-2 tracking-wider"
@@ -65,13 +68,14 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.6 }}>
           <div className="flex flex-wrap gap-4 justify-start items-center">
             <Link
-              href="#contact"
+              onClick={() => setIsModalOpen(true)}
+              href=""
               className="group inline-flex items-center justify-center text-sm border border-zinc-700 hover:text-zinc-100 hover:bg-zinc-900 dark:border-zinc-50 dark:hover:bg-white px-8 py-4 mr-2  dark:hover:text-black transition-colors duration-300 ">
               Get in touch
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href="#digital-garden"
+              href={URLs.space}
               className="group inline-flex items-center justify-center text-sm px-8 py-4 mt-0 bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300 m-0">
               Explore my digital space
             </Link>
@@ -81,7 +85,7 @@ export default function Hero() {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              href="https://github.com"
+              href={URLs.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors mr-2 border border-white/20 px-2 py-2 rounded-lg">
@@ -92,7 +96,7 @@ export default function Hero() {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              href="https://twitter.com"
+              href={URLs.x}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 dark:text-zinc-100 transition-colors mr-2  border border-white/20 px-2 py-2 rounded-lg">
@@ -103,7 +107,7 @@ export default function Hero() {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              href="https://linkedin.com"
+              href={URLs.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-700 dark:text-zinc-100 transition-colors mr-2  border border-white/20 px-2 py-2 rounded-lg">
@@ -130,6 +134,10 @@ export default function Hero() {
           <ArrowDown className="w-5 h-5" />
         </Link>
       </motion.div>
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }
