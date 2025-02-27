@@ -48,15 +48,15 @@ export default function Hero() {
           <div className="space-y-4">
             <h3 className="text-xl font-light">Full-Stack Development</h3>
             <p className="text-gray-400 leading-relaxed">
-              Specialized in React, Node.js, and cloud architecture. Building
-              scalable solutions that make an impact.
+              Crafting scalable web applications, solving real-world challenges,
+              and constantly learning new technologies on the go.
             </p>
           </div>
           <div className="space-y-4">
-            <h3 className="text-xl font-light">Lorem, ipsum dolor.</h3>
+            <h3 className="text-xl font-light">How I Make an Impact</h3>
             <p className="text-gray-400 leading-relaxed">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde
-              tempore totam cum veritatis laudantium accusantium.
+              Experienced in full-stack development, async collaboration, and
+              rapidly learning new technologies to build impactful solutions.
             </p>
           </div>
         </motion.div>
