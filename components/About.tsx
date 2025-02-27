@@ -33,6 +33,28 @@ export default function About() {
               doloremque libero recusandae eius, delectus doloribus, incidunt
               sint esse culpa, voluptatem at tempore nostrum dolores.
             </p>
+
+            <div className="space-y-4">
+              <h3 className="text-lg font-light">Tech Stack</h3>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  "JavaScript",
+                  "TypeScript",
+                  "React",
+                  "Node.js",
+                  "MongoDB",
+                  "Python",
+                  "Docker",
+                  "PostgreSQL",
+                ].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-4 py-2 text-sm bg-white/5 rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

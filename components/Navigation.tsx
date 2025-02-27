@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll } from "motion/react";
 import { Menu, X, Command, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import ContactModal from "./ContactModal";
 
 interface LinksProps {
   name: string;
-  href: string;
+  href?: string;
+  onClick?: () => void;
 }
 
 export default function Navigation() {
@@ -19,6 +21,8 @@ export default function Navigation() {
 
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     return scrollY.on("change", (latest) => {
@@ -41,8 +45,11 @@ export default function Navigation() {
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
-    { name: "Space", href: "#space" },
-    { name: "Contact", href: "#projects" },
+    {
+      name: "Space",
+      href: "https://divyanshusoni.notion.site/Space-1a74657276b48095baa1e9e22802b363",
+    },
+    { name: "Contact", onClick: () => setIsModalOpen(true) },
   ];
 
   const toggleTheme = () => {
@@ -52,7 +59,7 @@ export default function Navigation() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 p-4 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 p-28 z-40 transition-all duration-300 ${
           isScrolled
             ? "py-3 backdrop-blur-lg bg-zinc-50/80 dark:bg-zinc-950/80"
             : "py-5 bg-transparent"
@@ -66,14 +73,34 @@ export default function Navigation() {
 
           {/* Desktop navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            {links.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
-                {link.name}
-              </Link>
-            ))}
+            {links.map((link) =>
+              link.href ? (
+                link.href.startsWith("http") ? (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                ) : (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                )
+              ) : (
+                <button
+                  key={link.name}
+                  onClick={link.onClick}
+                  className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                  {link.name}
+                </button>
+              )
+            )}
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
@@ -130,7 +157,7 @@ export default function Navigation() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}>
                   <Link
-                    href={link.href}
+                    href={link.href ?? "#"}
                     onClick={() => setIsOpen(false)}
                     className="text-2xl font-light">
                     {link.name}
@@ -168,6 +195,10 @@ export default function Navigation() {
           </motion.div>
         )}
       </AnimatePresence>
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </>
   );
 }
