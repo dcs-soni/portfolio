@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-zinc-50 text-zinc-900 dark:text-zinc-100 dark:bg-zinc-950`}>
         <ThemeProvider>
