@@ -1,6 +1,6 @@
-import { GitHubIcon } from "@/public/icons/GitHub";
-import { LinkedInIcon } from "@/public/icons/LinkedIn";
-import { XIcon } from "@/public/icons/X";
-import { ComposeIcon } from "@/public/icons/Compose";
+import { GitHubIcon } from "@/public/icons/GitHubIcon";
+import { LinkedInIcon } from "@/public/icons/LinkedInIcon";
+import { XIcon } from "@/public/icons/XIcon";
+import { ComposeIcon } from "@/public/icons/ComposeIcon";
 
 export { GitHubIcon, LinkedInIcon, XIcon, ComposeIcon };
