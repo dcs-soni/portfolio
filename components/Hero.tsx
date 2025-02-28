@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { ReactNode, useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { GitHubIcon } from "@/public/icons/Github";
-import { XIcon } from "@/public/icons/X";
-import { LinkedInIcon } from "@/public/icons/LinkedIn";
-import { URLs } from "@/constants/urls";
 import ContactModal from "@/components/ContactModal";
+import { RESUME_DATA } from "@/data/RESUME_DATA";
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -14,14 +13,16 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-start justify-center md:py-8 lg:py-14 ">
+      className="min-h-screen flex items-start justify-center md:py-8 lg:py-14 lg:mt-10 ">
+      <div className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-500 to-purple-500 z-50 origin-left" />
+
       <div className="max-w-5xl">
         <motion.h1
           className="text-2xl md:text-3xl text-zinc-100 mb-2 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}>
-          Divyanshu Soni
+          {RESUME_DATA.name}
         </motion.h1>
 
         <motion.p
@@ -29,7 +30,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}>
-          SOFTWARE ENGINEER
+          {RESUME_DATA.title}
         </motion.p>
 
         <motion.h1
@@ -37,7 +38,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}>
-          Building thoughtful digital experiences
+          {RESUME_DATA.heroHeading}
         </motion.h1>
 
         <motion.div
@@ -46,17 +47,15 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}>
           <div className="space-y-4">
-            <h3 className="text-xl font-light">Full-Stack Development</h3>
+            <h3 className="text-xl font-light">{RESUME_DATA.subHeadingOne}</h3>
             <p className="text-gray-400 leading-relaxed">
-              Crafting scalable web applications, solving real-world challenges,
-              and constantly learning new technologies on the go.
+              {RESUME_DATA.subTextOne}
             </p>
           </div>
           <div className="space-y-4">
-            <h3 className="text-xl font-light">How I Make an Impact</h3>
+            <h3 className="text-xl font-light">{RESUME_DATA.subHeadingTwo}</h3>
             <p className="text-gray-400 leading-relaxed">
-              Experienced in full-stack development, async collaboration, and
-              rapidly learning new technologies to build impactful solutions.
+              {RESUME_DATA.subTextTwo}
             </p>
           </div>
         </motion.div>
@@ -75,45 +74,45 @@ export default function Hero() {
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href={URLs.space}
+              href={
+                RESUME_DATA.contact.social.find((item) => item.name === "Space")
+                  ?.url || "#"
+              }
               className="group inline-flex items-center justify-center text-sm px-8 py-4 mt-0 bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300 m-0">
               Explore my digital space
             </Link>
           </div>
 
           <div className="flex gap-2 items-center ">
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              href={URLs.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors mr-2 border border-white/20 px-2 py-2 rounded-lg">
-              <GitHubIcon />
-              <span className="sr-only">GitHub</span>
-            </motion.a>
+            {RESUME_DATA.contact.social.map(
+              ({
+                name,
+              }: {
+                name: string;
+                url: string;
+                icon: () => ReactNode;
+              }) => {
+                const social = RESUME_DATA.contact.social.find(
+                  (item) => item.name === name
+                );
 
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              href={URLs.x}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 dark:text-zinc-100 transition-colors mr-2  border border-white/20 px-2 py-2 rounded-lg">
-              <XIcon />
-              <span className="sr-only">Twitter</span>
-            </motion.a>
+                if (!social?.url) return null;
 
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              href={URLs.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-700 dark:text-zinc-100 transition-colors mr-2  border border-white/20 px-2 py-2 rounded-lg">
-              <LinkedInIcon />
-              <span className="sr-only">LinkedIn</span>
-            </motion.a>
+                return (
+                  <motion.a
+                    key={name}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={social?.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors mr-2 border border-white/20 px-2 py-2 rounded-lg">
+                    {social?.icon()}
+                    <span className="sr-only">{social?.name}</span>
+                  </motion.a>
+                );
+              }
+            )}
           </div>
         </motion.div>
       </div>
