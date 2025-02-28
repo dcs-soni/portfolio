@@ -3,7 +3,7 @@ import {
   LinkedInIcon,
   XIcon,
   ComposeIcon,
-} from "@/public/icons/index";
+} from "@/components/icons/index";
 
 export const RESUME_DATA = {
   constants: {
