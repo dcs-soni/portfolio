@@ -1,4 +1,9 @@
-import { GitHubIcon, LinkedInIcon, XIcon, ComposeIcon } from "@/public/icons";
+import {
+  GitHubIcon,
+  LinkedInIcon,
+  XIcon,
+  ComposeIcon,
+} from "@/public/icons/index";
 
 export const RESUME_DATA = {
   constants: {
