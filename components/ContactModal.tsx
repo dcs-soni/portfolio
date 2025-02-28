@@ -1,8 +1,4 @@
-import { URLs } from "@/constants/urls";
-import { Compose } from "@/public/icons/Compose";
-import { GitHubIcon } from "@/public/icons/Github";
-import { LinkedInIcon } from "@/public/icons/LinkedIn";
-import { XIcon } from "@/public/icons/X";
+import { RESUME_DATA } from "@/data/RESUME_DATA";
 import { Mail, Check, Copy, Calendar, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
@@ -29,7 +25,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText("divyanshusoni52@gmail.com");
+      await navigator.clipboard.writeText(RESUME_DATA.contact.email);
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 2000);
     } catch (err) {
@@ -82,7 +78,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <div className="flex items-center gap-3 overflow-hidden">
                   <Mail className="w-5 h-5 text-zinc-400 flex-shrink-0" />
                   <span className="truncate text-sm dark:text-zinc-400">
-                    divyanshusoni52@gmail.com
+                    {RESUME_DATA.contact.email}
                   </span>
                 </div>
                 <div className="flex ml-2 gap-2">
@@ -118,7 +114,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       title="Compose"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}>
-                      <Compose />
+                      {RESUME_DATA.constants.compose()}
                       <span className="text-xs ml-1 dark:text-zinc-200">
                         Compose
                       </span>
@@ -155,7 +151,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <div className="flex ml-2">
                   <div className="flex items-center gap-1 text-zinc-500 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-md px-2 py-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">
                     <motion.a
-                      href={URLs.cal}
+                      href={RESUME_DATA.constants?.cal}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center rounded-md "
@@ -185,33 +181,29 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </h3>
               </div>
               <div className="flex gap-3">
-                <motion.a
-                  href={URLs.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 p-3 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.98 }}>
-                  <LinkedInIcon />
-                </motion.a>
-                <motion.a
-                  href={URLs.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 p-3 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.98 }}>
-                  <GitHubIcon />
-                </motion.a>
-                <motion.a
-                  href={URLs.x}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 p-3 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.98 }}>
-                  <XIcon />
-                </motion.a>
+                {RESUME_DATA.contact.social.map(
+                  ({ name }: { name: string }) => {
+                    const social = RESUME_DATA.contact.social.find(
+                      (item) => item.name === name
+                    );
+
+                    if (!social?.url) return null;
+
+                    return (
+                      <motion.a
+                        key={name}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        href={social?.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 p-3 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">
+                        {social?.icon()}
+                        <span className="sr-only">{social?.name}</span>
+                      </motion.a>
+                    );
+                  }
+                )}
               </div>
             </div>
           </motion.div>

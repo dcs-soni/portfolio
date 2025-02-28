@@ -1,11 +1,8 @@
 "use client";
 
-import { URLs } from "@/constants/urls";
-import { GitHubIcon } from "@/public/icons/Github";
-import { LinkedInIcon } from "@/public/icons/LinkedIn";
-import { XIcon } from "@/public/icons/X";
 import { motion } from "motion/react";
 import { Mail } from "lucide-react";
+import { RESUME_DATA } from "@/data/RESUME_DATA";
 
 export default function Footer() {
   return (
@@ -26,43 +23,34 @@ export default function Footer() {
               reach out!
             </p>
             <a
-              href="mailto:divyanshusoni52@gmail.com"
+              href={`mailto:${RESUME_DATA.contact.email}`}
               className="inline-flex items-center text-sm border border-white/20 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
               <Mail className="w-4 h-4 mr-2" />
               Say Hello
             </a>
           </div>
-          <div className="flex justify-start md:justify-end space-x-6">
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              href={URLs.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors border border-white/20 px-2 py-2 rounded-lg">
-              <GitHubIcon />
-              <span className="sr-only">GitHub</span>
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              href={URLs.x}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors border border-white/20 px-2 py-2 rounded-lg">
-              <XIcon />
-              <span className="sr-only">Twitter</span>
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              href={URLs.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors border border-white/20 px-2 py-2 rounded-lg">
-              <LinkedInIcon />
-              <span className="sr-only">LinkedIn</span>
-            </motion.a>
+          <div className="flex justify-start md:justify-end space-x-4">
+            {RESUME_DATA.contact.social.map(({ name }: { name: string }) => {
+              const social = RESUME_DATA.contact.social.find(
+                (item) => item.name === name
+              );
+
+              if (!social?.url) return null;
+
+              return (
+                <motion.a
+                  key={name}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  href={social?.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors mr-2 border border-white/20 px-2 py-2 rounded-lg">
+                  {social?.icon()}
+                  <span className="sr-only">{social?.name}</span>
+                </motion.a>
+              );
+            })}
           </div>
         </motion.div>
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">

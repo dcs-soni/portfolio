@@ -1,4 +1,4 @@
-export const Compose = () => {
+export const ComposeIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

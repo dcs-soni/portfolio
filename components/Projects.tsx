@@ -1,33 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { RESUME_DATA } from "@/data/RESUME_DATA";
+import { motion } from "motion/react";
 import Image from "next/image";
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "Online plaform",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, explicabo!",
-      image: "/placeholder.svg",
-      link: "#",
-    },
-    {
-      title: "Online plaform",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, explicabo!",
-      image: "/placeholder.svg",
-      link: "#",
-    },
-    {
-      title: "Online plaform",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, explicabo!",
-      image: "/placeholder.svg",
-      link: "#",
-    },
-  ];
-
   return (
     <section id="projects" className="min-h-screen py-20 pt-36">
       <div className="max-w-5xl mx-auto">
@@ -40,7 +17,7 @@ export default function Projects() {
             Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+            {RESUME_DATA.projects.map((project, index) => (
               <motion.a
                 key={index}
                 href={project.link}
