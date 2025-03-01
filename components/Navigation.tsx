@@ -34,11 +34,9 @@ export default function Navigation() {
     setMounted(true);
   }, []);
 
-  const currentTheme = mounted
-    ? theme === "system"
-      ? systemTheme
-      : theme
-    : "light";
+  const currentTheme = theme === "system" ? systemTheme : theme;
+
+  // Return a non-interactive version for initial render
 
   const links: LinksProps[] = [
     { name: "Home", href: "#home" },
@@ -59,12 +57,12 @@ export default function Navigation() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 p-28 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 p-28 px-6 z-40 transition-all duration-300 ${
           isScrolled
             ? "py-3 backdrop-blur-lg bg-zinc-50/80 dark:bg-zinc-950/80"
             : "py-5 bg-transparent"
         }`}>
-        <div className="container mx-auto flex items-center justify-between">
+        <div className="container mx-auto flex items-center justify-between md:max-w-7xl">
           <Link href="#" className="text-lg font-medium ">
             <motion.span className="font-display text-zinc-600 dark:text-zinc-500 transition-colors hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500  dark:hover:text-transparent dark:hover:bg-clip-text darl:hover:bg-gradient-to-br dark:hover:from-blue-500 dark:hover:to-purple-500">
               DS
@@ -72,7 +70,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-6 font-semibold">
             {links.map((link) =>
               link.href ? (
                 link.href.startsWith("http") ? (
@@ -133,7 +131,8 @@ export default function Navigation() {
             className="block md:hidden p-2"
             onClick={() => setIsOpen(!isOpen)}
             whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}>
+            whileTap={{ scale: 0.95 }}
+            viewport={{ once: false, amount: 0.2 }}>
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             <span className="sr-only">Toggle menu</span>
           </motion.button>
@@ -148,14 +147,16 @@ export default function Navigation() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}>
+            transition={{ duration: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}>
             <div className="flex flex-col items-center justify-center h-full space-y-8">
               {links.map((link, index) => (
                 <motion.div
                   key={link.name}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}>
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: false, amount: 0.2 }}>
                   <Link
                     href={link.href ?? "#"}
                     onClick={() => setIsOpen(false)}
@@ -169,7 +170,8 @@ export default function Navigation() {
                 className="flex gap-6 mt-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: links.length * 0.1 }}>
+                transition={{ delay: links.length * 0.1 }}
+                viewport={{ once: false, amount: 0.2 }}>
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
