@@ -1,13 +1,7 @@
-import {
-  GitHubIcon,
-  LinkedInIcon,
-  XIcon,
-  ComposeIcon,
-} from "@/components/icons/index";
+import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons/index";
 
 export const RESUME_DATA = {
   constants: {
-    compose: ComposeIcon,
     cal: "https://cal.com/divyanshusoni/30min",
     space:
       "https://divyanshusoni.notion.site/Space-1a74657276b48095baa1e9e22802b363",
@@ -29,19 +23,19 @@ export const RESUME_DATA = {
       {
         name: "GitHub",
         url: "https://github.com/dcs-soni",
-        icon: GitHubIcon,
+        icon: <GitHubIcon />,
       },
 
       {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/dcs-soni/",
-        icon: LinkedInIcon,
+        icon: <LinkedInIcon />,
       },
 
       {
         name: "X",
         url: "https://x.com/divyanshu_soni_",
-        icon: XIcon,
+        icon: <XIcon />,
       },
     ],
   },
@@ -97,24 +91,30 @@ export const RESUME_DATA = {
   projects: [
     {
       title: "StashIt",
-      image: "",
-      link: "",
-      description: "",
+      image:
+        "https://images.pexels.com/photos/30840677/pexels-photo-30840677/free-photo-of-scenic-seascape-with-rugged-rock-formations.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      link: "https://www.google.com",
+      description:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, saepe ea nisi voluptatibus necessitatibus aspernatur?",
       techStack: ["React", "TypeScript", "Node.js", "MongoDB"],
     },
 
     {
-      title: "",
-      image: "",
-      link: "",
-      description: "",
+      title: "Scriblio",
+      image:
+        "https://images.pexels.com/photos/30840677/pexels-photo-30840677/free-photo-of-scenic-seascape-with-rugged-rock-formations.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      link: "https://www.google.com",
+      description:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, saepe ea nisi voluptatibus necessitatibus aspernatur?",
       techStack: ["React", "NextJS"],
     },
     {
       title: "StashIt",
-      image: "",
-      link: "",
-      description: "",
+      image:
+        "https://images.pexels.com/photos/30840677/pexels-photo-30840677/free-photo-of-scenic-seascape-with-rugged-rock-formations.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      link: "https://www.google.com",
+      description:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, saepe ea nisi voluptatibus necessitatibus aspernatur?",
       techStack: ["React", "TypeScript", "Node.js", "MongoDB"],
     },
   ],
