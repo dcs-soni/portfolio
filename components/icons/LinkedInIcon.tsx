@@ -1,7 +1,7 @@
 export const LinkedInIcon = () => {
   return (
     <svg
-      className="h-4 w-4 text-zinc-400 dark:text-zinc-100"
+      className="h-4 w-4 text-zinc-700 dark:text-zinc-200"
       stroke="currentColor"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg">

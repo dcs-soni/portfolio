@@ -1,5 +1,5 @@
 import { RESUME_DATA } from "@/data/RESUME_DATA";
-import { Mail, Check, Copy, Calendar, X } from "lucide-react";
+import { Mail, Check, Copy, Calendar, X, SquarePen } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 
@@ -63,13 +63,15 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </button>
 
             <div className="p-4">
-              <h2 className="text-2xl font-medium mb-6">Let&apos;s Connect</h2>
+              <h2 className="text-2xl font-medium mb-6 text-zinc-950 dark:text-zinc-100">
+                Let&apos;s Connect
+              </h2>
             </div>
 
             {/* Email Section */}
             <div className="mb-6 px-4">
               <div className="flex items-center gap-2 mb-2">
-                <label className="text-sm font-semibold text-zinc-500 dark:text-zinc-100 block">
+                <label className="text-sm font-semibold text-zinc-950 dark:text-zinc-100 block">
                   Email
                 </label>
               </div>
@@ -93,7 +95,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       ) : (
                         <Copy className="w-4 h-4" />
                       )}
-                      <span className="text-xs ml-1 dark:text-zinc-200">
+                      <span className="text-xs ml-1 font-semibold text-zinc-900 dark:text-zinc-200">
                         Copy
                       </span>
                       {copySuccess && (
@@ -109,13 +111,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
                   <div className="flex items-center gap-1 text-zinc-500 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-md px-2 py-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">
                     <motion.a
-                      href="mailto:divyanshusoni52@gmail.com"
+                      href={`mailto:${RESUME_DATA.contact.email}`}
                       className="flex items-center rounded-md "
                       title="Compose"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}>
-                      {RESUME_DATA.constants.compose()}
-                      <span className="text-xs ml-1 dark:text-zinc-200">
+                      <SquarePen className="w-4 h-4" />
+                      <span className="text-xs ml-1 font-semibold text-zinc-900 dark:text-zinc-200">
                         Compose
                       </span>
                     </motion.a>
@@ -127,7 +129,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             {/* OR Divider */}
             <div className="flex items-center justify-center px-4 mb-6">
               <div className="w-1/6 border-t border-zinc-300 dark:border-zinc-800"></div>
-              <span className="px-3 text-xs text-zinc-500 dark:text-zinc-400">
+              <span className="px-3 text-xs font-normal text-zinc-900 dark:text-zinc-400">
                 OR
               </span>
               <div className="w-1/6 border-t border-zinc-300 dark:border-zinc-800"></div>
@@ -136,7 +138,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             {/* Calendar Section  */}
             <div className="mb-6 px-4">
               <div className="flex items-center gap-2 mb-2">
-                <label className="text-sm font-semibold text-zinc-500 dark:text-zinc-100 block">
+                <label className="text-sm font-semibold text-zinc-950 dark:text-zinc-100 block">
                   Book a meeting
                 </label>
               </div>
@@ -158,7 +160,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}>
                       <Calendar className="w-4 h-4" />
-                      <span className="text-xs ml-1 dark:text-zinc-200">
+                      <span className="text-xs ml-1 font-semibold text-zinc-900 dark:text-zinc-200">
                         Book Call
                       </span>
                     </motion.a>
@@ -176,7 +178,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             {/* Social Links */}
             <div className="px-4 pt-4 pb-6   ">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-sm font-semibold dark:text-zinc-100">
+                <h3 className="text-sm font-semibold text-zinc-950 dark:text-zinc-100">
                   Connect on social media
                 </h3>
               </div>
@@ -197,8 +199,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         href={social?.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 p-3 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">
-                        {social?.icon()}
+                        className="flex-1 p-3 bg-zinc-200 dark:bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors">
+                        {social?.icon}
                         <span className="sr-only">{social?.name}</span>
                       </motion.a>
                     );
