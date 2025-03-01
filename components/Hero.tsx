@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
@@ -13,31 +13,34 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-start justify-center md:py-8 lg:py-14 lg:mt-10 ">
+      className="min-h-screen flex items-start justify-center py-24 px-6 md:py-8 md:mt-14 lg:py-14 lg:mt-10 sm:mt-18">
+      {/* Top multicolor line */}
       <div className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-500 to-purple-500 z-50 origin-left" />
-
-      <div className="max-w-5xl">
+      <div className=" max-w-5xl">
         <motion.h1
-          className="text-2xl md:text-3xl text-zinc-100 mb-2 tracking-wider"
+          className="text-2xl md:text-4xl text-zinc-900 font-semibold dark:text-zinc-100 mb-2 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}>
+          transition={{ duration: 0.5 }}
+          viewport={{ once: false, amount: 0.2 }}>
           {RESUME_DATA.name}
         </motion.h1>
 
         <motion.p
-          className="text-xs md:text-sm text-gray-400 mb-6 tracking-wider"
+          className="text-xs md:text-sm text-zinc-700 dark:text-zinc-400 mb-6 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}>
+          transition={{ duration: 0.5 }}
+          viewport={{ once: false, amount: 0.2 }}>
           {RESUME_DATA.title}
         </motion.p>
 
         <motion.h1
-          className="text-zinc-300 text-3xl md:text-5xl lg:text-7xl font-light leading-tight mb-8"
+          className="text-zinc-900  dark:text-zinc-300 text-4xl md:text-5xl lg:text-7xl font-light leading-tight mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}>
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: false, amount: 0.2 }}>
           {RESUME_DATA.heroHeading}
         </motion.h1>
 
@@ -45,16 +48,21 @@ export default function Hero() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}>
+          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: false, amount: 0.2 }}>
           <div className="space-y-4">
-            <h3 className="text-xl font-light">{RESUME_DATA.subHeadingOne}</h3>
-            <p className="text-gray-400 leading-relaxed">
+            <h3 className="text-xl text-zinc-700 dark:text-zinc-400">
+              {RESUME_DATA.subHeadingOne}
+            </h3>
+            <p className="text-sm md:text-md text-zinc-400 dark:text-gray-500 leading-relaxed">
               {RESUME_DATA.subTextOne}
             </p>
           </div>
           <div className="space-y-4">
-            <h3 className="text-xl font-light">{RESUME_DATA.subHeadingTwo}</h3>
-            <p className="text-gray-400 leading-relaxed">
+            <h3 className="text-xl text-zinc-700 dark:text-zinc-400">
+              {RESUME_DATA.subHeadingTwo}
+            </h3>
+            <p className="text-sm md:text-md text-zinc-400 dark:text-gray-500 leading-relaxed">
               {RESUME_DATA.subTextTwo}
             </p>
           </div>
@@ -64,12 +72,13 @@ export default function Hero() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}>
+          transition={{ duration: 0.5, delay: 0.6 }}
+          viewport={{ once: false, amount: 0.2 }}>
           <div className="flex flex-wrap gap-4 justify-start items-center">
             <Link
               onClick={() => setIsModalOpen(true)}
               href=""
-              className="group inline-flex items-center justify-center text-sm border border-zinc-700 hover:text-zinc-100 hover:bg-zinc-900 dark:border-zinc-50 dark:hover:bg-white px-8 py-4 mr-2  dark:hover:text-black transition-colors duration-300 ">
+              className="group inline-flex items-center justify-center text-sm border border-zinc-700 hover:text-zinc-100 hover:bg-zinc-900 dark:border-zinc-50 dark:hover:bg-white px-4 py-2 mr-1 md:px-8 md:py-4 md:mr-2  dark:hover:text-black transition-colors duration-300 ">
               Get in touch
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
@@ -78,41 +87,33 @@ export default function Hero() {
                 RESUME_DATA.contact.social.find((item) => item.name === "Space")
                   ?.url || "#"
               }
-              className="group inline-flex items-center justify-center text-sm px-8 py-4 mt-0 bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300 m-0">
-              Explore my digital space
+              className="group inline-flex items-center justify-center text-sm px-4 py-2 mr-1 md:px-8 md:py-4 md:mt-0 bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300 m-0">
+              Explore my Space
             </Link>
           </div>
 
           <div className="flex gap-2 items-center ">
-            {RESUME_DATA.contact.social.map(
-              ({
-                name,
-              }: {
-                name: string;
-                url: string;
-                icon: () => ReactNode;
-              }) => {
-                const social = RESUME_DATA.contact.social.find(
-                  (item) => item.name === name
-                );
+            {RESUME_DATA.contact.social.map(({ name }: { name: string }) => {
+              const social = RESUME_DATA.contact.social.find(
+                (item) => item.name === name
+              );
 
-                if (!social?.url) return null;
+              if (!social?.url) return null;
 
-                return (
-                  <motion.a
-                    key={name}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    href={social?.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors mr-2 border border-white/20 px-2 py-2 rounded-lg">
-                    {social?.icon()}
-                    <span className="sr-only">{social?.name}</span>
-                  </motion.a>
-                );
-              }
-            )}
+              return (
+                <motion.a
+                  key={name}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  href={social?.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-800 border-zinc-400 dark:text-gray-400 dark:hover:text-white transition-colors mr-2 border dark:border-white/20 px-2 py-2 rounded-lg">
+                  {social?.icon}
+                  <span className="sr-only">{social?.name}</span>
+                </motion.a>
+              );
+            })}
           </div>
         </motion.div>
       </div>
