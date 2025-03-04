@@ -30,6 +30,7 @@ export default function Projects() {
                 viewport={{ once: true }}>
                 <div className="relative overflow-hidden">
                   <Image
+                    aria-hidden={true}
                     src={project.image}
                     alt={project.title}
                     width={800}
