@@ -35,14 +35,14 @@ export default function Hero() {
           {RESUME_DATA.title}
         </motion.p>
 
-        <motion.h1
+        <motion.h2
           className="text-zinc-900  dark:text-zinc-300 text-4xl md:text-5xl lg:text-7xl font-light leading-tight mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: false, amount: 0.2 }}>
           {RESUME_DATA.heroHeading}
-        </motion.h1>
+        </motion.h2>
 
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
