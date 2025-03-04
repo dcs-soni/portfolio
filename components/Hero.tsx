@@ -54,7 +54,7 @@ export default function Hero() {
             <h3 className="text-xl text-zinc-700 dark:text-zinc-400">
               {RESUME_DATA.subHeadingOne}
             </h3>
-            <p className="text-sm md:text-md text-zinc-400 dark:text-gray-500 leading-relaxed">
+            <p className="text-sm md:text-md text-zinc-400 dark:text-gray-400 leading-relaxed">
               {RESUME_DATA.subTextOne}
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function Hero() {
             <h3 className="text-xl text-zinc-700 dark:text-zinc-400">
               {RESUME_DATA.subHeadingTwo}
             </h3>
-            <p className="text-sm md:text-md text-zinc-400 dark:text-gray-500 leading-relaxed">
+            <p className="text-sm md:text-md text-zinc-400 dark:text-gray-400 leading-relaxed">
               {RESUME_DATA.subTextTwo}
             </p>
           </div>
