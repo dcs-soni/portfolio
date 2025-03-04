@@ -64,7 +64,7 @@ export default function Navigation() {
         }`}>
         <div className="container mx-auto flex items-center justify-between md:max-w-7xl">
           <Link href="#" className="text-lg font-medium ">
-            <motion.span className="font-display text-zinc-600 dark:text-zinc-500 transition-colors hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500  dark:hover:text-transparent dark:hover:bg-clip-text darl:hover:bg-gradient-to-br dark:hover:from-blue-500 dark:hover:to-purple-500">
+            <motion.span className="font-bold text-zinc-600 dark:text-zinc-400 transition-colors hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500  dark:hover:text-transparent dark:hover:bg-clip-text darl:hover:bg-gradient-to-br dark:hover:from-blue-500 dark:hover:to-purple-500">
               DS
             </motion.span>
           </Link>
