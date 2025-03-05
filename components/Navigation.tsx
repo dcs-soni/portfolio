@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useScroll } from "motion/react";
 import { Menu, X, Command, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import ContactModal from "./ContactModal";
+import { CommandMenu } from "./Command";
 
 interface LinksProps {
   name: string;
@@ -61,16 +62,23 @@ export default function Navigation() {
           isScrolled
             ? "py-3 backdrop-blur-lg bg-zinc-50/80 dark:bg-zinc-950/80"
             : "py-5 bg-transparent"
-        }`}>
+        }`}
+        role="banner">
         <div className="container mx-auto flex items-center justify-between md:max-w-7xl">
-          <Link href="#" className="text-lg font-medium ">
+          <Link
+            href="#"
+            className="text-lg font-medium"
+            aria-label="Go to home">
             <motion.span className="font-bold text-zinc-600 dark:text-zinc-400 transition-colors hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500  dark:hover:text-transparent dark:hover:bg-clip-text darl:hover:bg-gradient-to-br dark:hover:from-blue-500 dark:hover:to-purple-500">
               DS
             </motion.span>
           </Link>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex items-center space-x-6 font-semibold">
+          <nav
+            className="hidden md:flex items-center space-x-6 font-semibold"
+            role="navigation"
+            aria-label="Main navigation">
             {links.map((link) =>
               link.href ? (
                 link.href.startsWith("http") ? (
@@ -107,34 +115,50 @@ export default function Navigation() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={toggleTheme}
+                aria-label={`Switch to ${
+                  theme === "dark" ? "light" : "dark"
+                } mode`}
                 className="p-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
                 {theme === "dark" ? (
-                  <Sun className="w-5 h-5" />
+                  <Sun className="w-5 h-5" aria-hidden="true" />
                 ) : (
-                  <Moon className="w-5 h-5" />
+                  <Moon className="w-5 h-5" aria-hidden="true" />
                 )}
-                <span className="sr-only">Toggle theme</span>
               </motion.button>
             )}
 
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
-              <Command className="w-5 h-5" />
-              <span className="sr-only">Open command palette</span>
+              className={`px-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors flex justify-center items-center duration-300 ease-in-out relative`}
+              aria-label="Open command menu">
+              <Command className="w-5 h-5" aria-hidden="true" />
+
+              <kbd
+                className={`text-xs whitespace-nowrap transition-all duration-300 ease-in-out absolute left-1/2 -translate-x-1/2 opacity-100 ${
+                  isScrolled ? "translate-y-15 translate-x-4" : "translate-y-6 "
+                }`}>
+                Ctrl K
+              </kbd>
+
+              <CommandMenu />
             </motion.button>
           </div>
 
-          {/* Mobile menu buttton */}
+          {/* Mobile menu button */}
           <motion.button
             className="block md:hidden p-2"
             onClick={() => setIsOpen(!isOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            viewport={{ once: false, amount: 0.2 }}>
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            <span className="sr-only">Toggle menu</span>
+            viewport={{ once: false, amount: 0.2 }}
+            aria-expanded={isOpen}
+            aria-label="Toggle mobile menu">
+            {isOpen ? (
+              <X className="w-6 h-6" aria-hidden="true" />
+            ) : (
+              <Menu className="w-6 h-6" aria-hidden="true" />
+            )}
           </motion.button>
         </div>
       </header>
@@ -143,13 +167,18 @@ export default function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-10 z-30 md:hidden bg-zinc-50 dark:bg-zinc-950"
+            className="fixed inset-0 w-full z-30 md:hidden bg-zinc-50 dark:bg-zinc-950"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            viewport={{ once: false, amount: 0.2 }}>
-            <div className="flex flex-col items-center justify-center h-full space-y-8">
+            viewport={{ once: false, amount: 0.2 }}
+            role="dialog"
+            aria-label="Mobile menu">
+            <nav
+              className="flex flex-col items-center justify-center h-full space-y-8"
+              role="navigation"
+              aria-label="Mobile navigation">
               {links.map((link, index) => (
                 <motion.div
                   key={link.name}
@@ -178,22 +207,25 @@ export default function Navigation() {
                   onClick={() => {
                     setTheme(theme === "dark" ? "light" : "dark");
                   }}
+                  aria-label={`Switch to ${
+                    theme === "dark" ? "light" : "dark"
+                  } mode`}
                   className="p-2 rounded-full">
                   {currentTheme === "dark" ? (
-                    <Sun className="w-5 h-5" />
+                    <Sun className="w-5 h-5" aria-hidden="true" />
                   ) : (
-                    <Moon className="w-5 h-5" />
+                    <Moon className="w-5 h-5" aria-hidden="true" />
                   )}
                 </motion.button>
-
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-2 rounded-full">
-                  <Command className="w-5 h-5" />
+                  className="p-2 rounded-full"
+                  aria-label="Open command menu">
+                  <Command className="w-5 h-5" aria-hidden="true" />
                 </motion.button>
               </motion.div>
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
