@@ -130,12 +130,12 @@ export default function Navigation() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors flex justify-center items-center duration-300 ease-in-out relative`}
+              className={`px-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-all flex justify-center items-center duration-100 ease-in-out relative`}
               aria-label="Open command menu">
               <Command className="w-5 h-5" aria-hidden="true" />
 
               <kbd
-                className={`text-xs whitespace-nowrap transition-all duration-300 ease-in-out absolute left-1/2 -translate-x-1/2 opacity-100 ${
+                className={`text-xs whitespace-nowrap transition-all duration-100 ease-in-out absolute left-1/2 -translate-x-1/2 opacity-100 ${
                   isScrolled ? "translate-y-15 translate-x-4" : "translate-y-6 "
                 }`}>
                 Ctrl K
@@ -179,21 +179,34 @@ export default function Navigation() {
               className="flex flex-col items-center justify-center h-full space-y-8"
               role="navigation"
               aria-label="Mobile navigation">
-              {links.map((link, index) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: false, amount: 0.2 }}>
-                  <Link
-                    href={link.href ?? "#"}
-                    onClick={() => setIsOpen(false)}
-                    className="text-2xl font-light">
+              {links.map((link) =>
+                link.href ? (
+                  link.href.startsWith("http") ? (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                      {link.name}
+                    </Link>
+                  )
+                ) : (
+                  <button
+                    key={link.name}
+                    onClick={link.onClick}
+                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
                     {link.name}
-                  </Link>
-                </motion.div>
-              ))}
+                  </button>
+                )
+              )}
 
               <motion.div
                 className="flex gap-6 mt-8"
@@ -217,13 +230,13 @@ export default function Navigation() {
                     <Moon className="w-5 h-5" aria-hidden="true" />
                   )}
                 </motion.button>
-                <motion.button
+                {/* <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-2 rounded-full"
                   aria-label="Open command menu">
                   <Command className="w-5 h-5" aria-hidden="true" />
-                </motion.button>
+                </motion.button> */}
               </motion.div>
             </nav>
           </motion.div>
