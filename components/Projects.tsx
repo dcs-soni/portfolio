@@ -3,11 +3,16 @@
 import { RESUME_DATA } from "@/data/RESUME_DATA";
 import { motion } from "motion/react";
 import Image from "next/image";
+import { GitHubIcon } from "./icons";
+import Link from "next/link";
+import { Dot } from "lucide-react";
 
 export default function Projects() {
   return (
     <section
       id="projects"
+      aria-label="Projects"
+      role="region"
       className="min-h-screen px-6 py-14 md:py-20 md:pt-36">
       <div className="max-w-5xl mx-auto">
         <motion.div
@@ -15,41 +20,64 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: false, amount: 0.2 }}>
-          <h2 className="sm:text-md md:text-lg font-semibold mb-12 text-zinc-900 dark:text-zinc-100">
+          <h2 className="sm:text-md md:text-lg font-semibold mb-12 text-zinc-100">
             PROJECTS
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            role="list"
+            aria-label="List of projects">
             {RESUME_DATA.projects.map((project, index) => (
-              <motion.a
+              <motion.div
                 key={index}
-                href={project.link}
-                className="block group"
+                onClick={() => window.open(project.link, "_blank")}
+                className="block group rounded-lg overflow-hidden shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}>
+                viewport={{ once: true }}
+                role="listitem"
+                aria-label={`${project.title} - ${project.description}`}>
                 <div className="relative overflow-hidden">
-                  <Image
-                    aria-hidden={true}
-                    src={project.image}
-                    alt={project.title}
-                    width={800}
-                    height={600}
-                    className="max-w-56 md:max-w-2xl mx-auto md:w-full transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 group-hover:text-zinc-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-center p-6">
-                      <h3 className="text-xl font-light mb-2">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-400">{project.description}</p>
-                      <p className="text-xs text-gray-400 mt-6">
-                        {project.techStack}
+                  {/* Project Image */}
+                  <div className="aspect-[4/3] relative overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={`Preview of ${project.title}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      // className="object-cover transition-transform duration-500 group-hover:scale-105 bg-gradient-to-t from-zinc-900/60 via-transparent to-transparent "
+                      className="cursor-pointer transition-transform duration-500 group-hover:scale-105 object-cover [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.7),rgba(0,0,0,0)_90%)]"
+                    />
+                  </div>
+                  {/* Project Info - Dark bottom section */}
+                  <div className="px-6 pb-6  bottom-0 left-0 w-full h-50 bg-gradient-to-t from-zinc-900/10 via-transparent to-transparent  ">
+                    <h3 className="text-xl font-light mb-2 text-zinc-100">
+                      {project.title}
+                    </h3>
+                    <p className="text-zinc-400 text-sm mb-4">
+                      {project.description}
+                    </p>
+                    <div className="mt-4 pt-4 flex items-center justify-between ">
+                      <p
+                        className="text-xs text-zinc-500 "
+                        aria-label="Technologies used">
+                        {project.techStack.map((tech, index) => (
+                          <span
+                            key={index}
+                            className="inline-flex items-center">
+                            <Dot className="w-3 h-3" /> {tech}
+                          </span>
+                        ))}
                       </p>
+                      <Link href={project.link}>
+                        <GitHubIcon className="h-4 w-4 text-zinc-500" />
+                      </Link>
                     </div>
                   </div>
                 </div>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
         </motion.div>
