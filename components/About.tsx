@@ -23,9 +23,11 @@ export default function About() {
             className="space-y-6 text-zinc-500 dark:text-gray-400"
             role="region"
             aria-label="About me description">
-            <p>{RESUME_DATA.aboutMe.descriptionOne}</p>
-            <p>{RESUME_DATA.aboutMe.descroiptionTwo}</p>
-
+            {Object.values(RESUME_DATA.aboutMe.description).map(
+              (desc, index) => (
+                <p key={index}>{desc}</p>
+              )
+            )}
             <div
               className="space-y-4"
               role="region"

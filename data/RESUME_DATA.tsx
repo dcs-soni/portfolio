@@ -41,12 +41,19 @@ export const RESUME_DATA = {
   },
 
   aboutMe: {
-    descriptionOne:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, quas! Odit maxime rerum veniam reiciendis quas aspernatur distinctio debitis minus perferendis, veritatis, voluptatibus quibusdam ipsam. Vel expedita, voluptate ipsum natus inventore repellat et assumenda ea. Voluptatum quas possimus tempore sed!",
+    description: {
+      descriptionOne:
+        "I've always been fascinated by how technology works—how systems communicate, how products are built, and how complex problems are solved through code. My journey wasn't traditional, but that's what makes it exciting.",
 
-    descroiptionTwo:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, quas! Odit maxime rerum veniam reiciendis quas aspernatur distinctio debitis minus perferendis, veritatis, voluptatibus quibusdam ipsam. Vel expedita, voluptate ipsum natus inventore repellat et assumenda ea. Voluptatum quas possimus tempore sed!",
+      descriptionTwo:
+        "Starting in Electronics & Communication Engineering, I explored IoT, Arduino, and Raspberry Pi, building automation and robotics projects. During the COVID lockdown, I pivoted to software development, leading me to JetBrains Academy. There, I worked with a global team to create interactive projects, automated test cases, and structured learning experiences for 500k+ learners. I contributed to project design, code reviews, and debugging, ensuring high-quality technical content and coding practices.",
 
+      descriptionThree:
+        "I wrote automated test cases using hs-test-web, JetBrains' internal testing library, enabling: Validation of user solutions inside JetBrains IDEs, Testing of web applications through real-world interactions, DOM manipulations, and API calls, and, Instant feedback to learners, improving code quality and problem-solving skills.",
+
+      descriptionFour:
+        "I thrive in async, distributed teams, adapting quickly to new technologies as per project needs. Beyond testing, I review code, fix broken test cases, and refine projects to enhance efficiency. Currently, I focus on building full-stack AI applications, solving complex engineering challenges, and optimizing workflows.",
+    },
     techStack: [
       "JavaScript",
       "TypeScript",
@@ -62,28 +69,39 @@ export const RESUME_DATA = {
   work: [
     {
       company: "JetBrains Academy",
-      link: "https://www.jetbrains.com/academy/",
+      brand: "Hyperskill",
+      link: "https://academy.jetbrains.com",
       badges: ["Remote", "Freelance"],
       title: "Frontend Expert",
-      start: "October 2021",
+      start: "Oct 2021",
       end: "Present",
       description: [
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio reprehenderit magni sapiente possimus voluptatibus hic delectus eos nemo iure!",
+        "At JetBrains Academy, I developed interactive projects and wrote automated test cases, leveraging hs-test-web to validate user solutions directly inside JetBrains IDEs.",
 
-        " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis voluptate alias aliquam eius quae doloribus dolores libero harum vero eligendi?",
+        "I designed and tested projects across C++, HTML, CSS, JavaScript, TypeScript, React, ensuring real-time evaluation of user implementations for correctness, edge cases, and performance.",
+
+        "Using hs-test-web, I automated testing for dynamic web apps—simulating user interactions, DOM manipulations, and HTTP requests—enhancing feedback mechanisms for learners inside JetBrains IDEs.",
+
+        "I also refactored and debugged complex projects, aligning them with best practices to improve efficiency, maintainability, and the overall learning experience.",
       ],
     },
 
     {
-      company: "JetBrains Academy",
+      company: "InterviewBit Technologies",
+      brand: "Scaler",
       link: "https://www.jetbrains.com/academy/",
       badges: ["Remote", "Freelance"],
       title: "Frontend Expert",
-      start: "October 2021",
-      end: "Present",
+      start: "Jan 2022",
+      end: "Jan 2023",
       description: [
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, distinctio reprehenderit magni sapiente possimus voluptatibus hic delectus eos nemo iure!",
-        " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis voluptate alias aliquam eius quae doloribus dolores libero harum vero eligendi?",
+        "At Scaler Academy, I focused on creating SEO-optimized technical content for HTML, CSS, JavaScript, and SQL, ensuring high discoverability and readability.",
+
+        "Developed in-depth articles, tutorials, and explanations that simplified complex concepts while maintaining technical accuracy.",
+
+        "Optimized content structure and keyword placement to enhance search engine rankings, making learning resources more accessible to a wider audience.",
+
+        "Refined and updated technical documentation to keep it aligned with industry standards and best practices.",
       ],
     },
   ],
@@ -94,8 +112,8 @@ export const RESUME_DATA = {
       image:
         "https://images.pexels.com/photos/30840677/pexels-photo-30840677/free-photo-of-scenic-seascape-with-rugged-rock-formations.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       link: "https://www.google.com",
-      description:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, saepe ea nisi voluptatibus necessitatibus aspernatur?",
+      sourceCode: "https:www/facebook.com",
+      description: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       techStack: ["React", "TypeScript", "Node.js", "MongoDB"],
     },
 
@@ -104,8 +122,8 @@ export const RESUME_DATA = {
       image:
         "https://images.pexels.com/photos/30840677/pexels-photo-30840677/free-photo-of-scenic-seascape-with-rugged-rock-formations.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       link: "https://www.google.com",
-      description:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, saepe ea nisi voluptatibus necessitatibus aspernatur?",
+      sourceCode: "https:www/facebook.com",
+      description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
       techStack: ["React", "NextJS"],
     },
     {
@@ -113,8 +131,8 @@ export const RESUME_DATA = {
       image:
         "https://images.pexels.com/photos/30840677/pexels-photo-30840677/free-photo-of-scenic-seascape-with-rugged-rock-formations.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       link: "https://www.google.com",
-      description:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, saepe ea nisi voluptatibus necessitatibus aspernatur?",
+      sourceCode: "https:www/facebook.com",
+      description: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       techStack: ["React", "TypeScript", "Node.js", "MongoDB"],
     },
   ],
