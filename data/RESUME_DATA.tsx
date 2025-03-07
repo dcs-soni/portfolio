@@ -76,7 +76,7 @@ export const RESUME_DATA = {
       start: "Oct 2021",
       end: "Present",
       description: [
-        "At JetBrains Academy, I developed interactive projects and wrote automated test cases, leveraging hs-test-web to validate user solutions directly inside JetBrains IDEs.",
+        "At JetBrains Academy [Hyperskill], I developed interactive projects and wrote automated test cases, leveraging hs-test-web to validate user solutions directly inside JetBrains IDEs.",
 
         "I designed and tested projects across C++, HTML, CSS, JavaScript, TypeScript, React, ensuring real-time evaluation of user implementations for correctness, edge cases, and performance.",
 
@@ -89,13 +89,13 @@ export const RESUME_DATA = {
     {
       company: "InterviewBit Technologies",
       brand: "Scaler",
-      link: "https://www.jetbrains.com/academy/",
+      link: "https://www.scaler.com/topics/",
       badges: ["Remote", "Freelance"],
-      title: "Frontend Expert",
+      title: "Technical Content Writer",
       start: "Jan 2022",
       end: "Jan 2023",
       description: [
-        "At Scaler Academy, I focused on creating SEO-optimized technical content for HTML, CSS, JavaScript, and SQL, ensuring high discoverability and readability.",
+        "At Interviewbit Technologies [Scaler] , I focused on creating SEO-optimized technical content for HTML, CSS, JavaScript, and SQL, ensuring high discoverability and readability.",
 
         "Developed in-depth articles, tutorials, and explanations that simplified complex concepts while maintaining technical accuracy.",
 
