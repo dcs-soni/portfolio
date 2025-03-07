@@ -9,7 +9,9 @@ export default function VisitorCount() {
   useEffect(() => {
     const fetchVisitorCount = async () => {
       try {
-        const response = await fetch("/api/track-visitor");
+        const response = await fetch("/api/track-visitor", {
+          cache: "no-store",
+        });
         const data = await response.json();
         if (data.success) {
           setVisitorCount(data.uniqueVisitors);
