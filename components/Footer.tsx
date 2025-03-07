@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Mail } from "lucide-react";
+import { Dot, Mail } from "lucide-react";
 import { RESUME_DATA } from "@/data/RESUME_DATA";
+import VisitorCount from "./VisitorCount";
 
 export default function Footer() {
   return (
@@ -68,9 +69,15 @@ export default function Footer() {
         <div
           className="mt-12 pt-6 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center"
           role="contentinfo">
-          <p className="text-zinc-900 dark:text-gray-400 text-sm mb-4 md:mb-0">
-            Crafted with passion and code.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-2">
+            <p className="text-zinc-900 dark:text-gray-400 text-sm">
+              Crafted with passion and code.
+            </p>
+            <span className="hidden md:inline dark:text-gray-400">
+              <Dot></Dot>
+            </span>
+            <VisitorCount />
+          </div>
           <motion.a
             href="#home"
             aria-label="Back to top"
