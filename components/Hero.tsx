@@ -96,10 +96,7 @@ export default function Hero() {
               />
             </Link>
             <Link
-              href={
-                RESUME_DATA.contact.social.find((item) => item.name === "Space")
-                  ?.url || "#"
-              }
+              href={RESUME_DATA.constants.space}
               aria-label="Explore my Space"
               role="button"
               className="group inline-flex items-center justify-center text-sm px-4 py-2 mr-1 md:px-8 md:py-4 md:mt-0 bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300 m-0">
