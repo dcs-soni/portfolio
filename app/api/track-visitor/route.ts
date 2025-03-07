@@ -19,7 +19,7 @@ export async function GET(request: Request) {
     const exists = await redis.exists(key);
     console.log(exists);
     if (!exists) {
-      // Set the IP with 2-day expiration (172800 seconds)
+      // Set the IP with 1-day expiration
       await redis.setex(key, 86400, "1");
 
       await redis.incr("total_unique_visitors");
