@@ -13,7 +13,7 @@ async function hashString(input: string): Promise<string> {
 }
 
 export async function middleware(req: NextRequest) {
-  const ip = req.ip || req.headers.get("x-forwarded-for") || "unknown";
+  const ip = req.headers.get("x-forwarded-for") || "unknown";
   const userAgent = req.headers.get("user-agent") || "unknown";
 
   // Combine IP & User-Agent for better uniqueness
