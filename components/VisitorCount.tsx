@@ -12,7 +12,7 @@ export default function VisitorCount() {
         const response = await fetch("/api/track-visitor");
         const data = await response.json();
         if (data.success) {
-          setVisitorCount(data.totalVisitors);
+          setVisitorCount(data.uniqueVisitors);
         }
       } catch (error) {
         console.error("Error fetching visitor count:", error);
@@ -28,7 +28,9 @@ export default function VisitorCount() {
 
   return (
     <span className="text-zinc-700 dark:text-gray-400 text-sm">
-      {visitorCount.toLocaleString()} unique visitors
+      {isLoading
+        ? "Loading Visitors..."
+        : `${visitorCount.toLocaleString()} unique visitors`}
     </span>
   );
 }
