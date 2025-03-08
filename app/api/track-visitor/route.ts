@@ -6,16 +6,22 @@ import redis from "@/lib/redis";
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
 
-// Handle both GET and POST
-export async function POST() {
-  return handleVisitorCount();
-}
-
+// GET only returns the count without incrementing
 export async function GET() {
-  return handleVisitorCount();
+  try {
+    const uniqueVisitors = await redis.pfcount("unique_visitors");
+    return NextResponse.json({ success: true, uniqueVisitors });
+  } catch (error) {
+    console.error('Error getting visitor count:', error);
+    return NextResponse.json(
+      { success: false, error: "Failed to get visitor count" },
+      { status: 500 }
+    );
+  }
 }
 
-async function handleVisitorCount() {
+// POST handles the actual visitor tracking
+export async function POST() {
   try {
     const headersList = await headers();
     const userAgent = headersList.get("user-agent") || "";
@@ -38,6 +44,7 @@ async function handleVisitorCount() {
       const exists = await redis.exists(key);
 
       if (!exists) {
+        // Store in Redis with 24h expiration
         await redis
           .multi()
           .pfadd("unique_visitors", ip)
