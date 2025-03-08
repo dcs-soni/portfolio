@@ -10,7 +10,9 @@ export default function VisitorCount() {
     const fetchVisitorCount = async () => {
       try {
         const response = await fetch("/api/track-visitor", {
-          cache: "no-store",
+          method: 'POST',
+          cache: 'no-store',
+          next: { revalidate: 0 }
         });
         const data = await response.json();
         if (data.success) {
@@ -30,9 +32,7 @@ export default function VisitorCount() {
 
   return (
     <span className="text-zinc-700 dark:text-gray-400 text-sm">
-      {isLoading
-        ? "Loading Visitors..."
-        : `${visitorCount.toLocaleString()} unique visitors`}
+      {visitorCount.toLocaleString()} unique visitors
     </span>
   );
 }

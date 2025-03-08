@@ -2,7 +2,20 @@ import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import redis from "@/lib/redis";
 
+// Force dynamic execution
+export const dynamic = "force-dynamic";
+export const runtime = "edge";
+
+// Handle both GET and POST
+export async function POST() {
+  return handleVisitorCount();
+}
+
 export async function GET() {
+  return handleVisitorCount();
+}
+
+async function handleVisitorCount() {
   try {
     const headersList = await headers();
     const userAgent = headersList.get("user-agent") || "";
@@ -19,15 +32,12 @@ export async function GET() {
     // Get the IP for additional verification
     const ip = headersList.get("x-forwarded-for")?.split(",")[0] || "unknown";
 
-    console.log(ip);
-
     // Only count if not a bot and has valid IP
     if (!isBot && ip !== "unknown") {
       const key = `visitor:${ip}`;
       const exists = await redis.exists(key);
 
       if (!exists) {
-        // Store in Redis with 24h expiration
         await redis
           .multi()
           .pfadd("unique_visitors", ip)
