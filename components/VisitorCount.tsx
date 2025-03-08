@@ -1,57 +1,59 @@
 "use client";
-
 import { useEffect, useState } from "react";
+
+function getCookie(name: string): string | null {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(";").shift() || null;
+  return null;
+}
+
+function setCookie(name: string, value: string, days: number) {
+  const date = new Date();
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+  const expires = `expires=${date.toUTCString()}`;
+  document.cookie = `${name}=${value}; ${expires}; path=/`;
+}
 
 export default function VisitorCount() {
   const [visitorCount, setVisitorCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const VISITOR_KEY = 'last_visit';
-    const VISITOR_COUNT_KEY = 'visitor_count';
-    
     const fetchVisitorCount = async () => {
       try {
-        // Check if we've already counted this visitor today
-        const lastVisit = localStorage.getItem(VISITOR_KEY);
+        // Check if this is a new visit for today
+        const lastVisit = getCookie("last_visit");
         const today = new Date().toDateString();
-        const cachedCount = localStorage.getItem(VISITOR_COUNT_KEY);
+        const isNewVisit = lastVisit !== today;
 
-        // If we have a cached count and it's not time to update, use it
-        if (lastVisit === today && cachedCount) {
-          setVisitorCount(parseInt(cachedCount));
-          setIsLoading(false);
-          return;
-        }
-
-        // Make a single POST request to track the visit and get the count
-        const response = await fetch("/api/track-visitor", {
-          method: lastVisit === today ? 'GET' : 'POST',
-          cache: 'no-store'
-        });
+        // Make a single API call with the visit status
+        const response = await fetch(
+          `/api/track-visitor${isNewVisit ? "?track=true" : ""}`,
+          {
+            method: "GET",
+            cache: "no-store",
+          }
+        );
 
         const data = await response.json();
         if (data.success) {
           setVisitorCount(data.uniqueVisitors);
-          // Cache the count and visit date
-          localStorage.setItem(VISITOR_COUNT_KEY, data.uniqueVisitors.toString());
-          localStorage.setItem(VISITOR_KEY, today);
+
+          // Only set cookie if it was a new visit
+          if (isNewVisit) {
+            setCookie("last_visit", today, 1);
+          }
         }
       } catch (error) {
         console.error("Error fetching visitor count:", error);
-        // If there's an error, use cached count if available
-        const cachedCount = localStorage.getItem(VISITOR_COUNT_KEY);
-        if (cachedCount) {
-          setVisitorCount(parseInt(cachedCount));
-        }
       } finally {
         setIsLoading(false);
       }
     };
 
-    // Only fetch once when component mounts
     fetchVisitorCount();
-  }, []); // Empty dependency array ensures this only runs once
+  }, []);
 
   if (isLoading) return null;
 
