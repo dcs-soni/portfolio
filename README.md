@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Portfolio
 
-## Getting Started
+Welcome to my portfolio website! This site serves as a comprehensive showcase of my work as a Software Engineer, highlighting my skills, projects, and professional journey. It is designed to provide visitors with an engaging experience while exploring my background and the technologies I work with.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [License](#license)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Introduction
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This portfolio is a reflection of my passion for software development and my commitment to creating impactful digital experiences. It includes various sections that detail my professional background, including:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Hero Section**: An introduction to who I am and what I do, featuring my name and title prominently.
+- **About Me**: A narrative that outlines my journey in technology, my skills, and my approach to problem-solving.
+- **Experience**: A timeline of my professional experiences, showcasing the companies I've worked for, my roles, and the contributions I've made.
+- **Projects**: A gallery of my projects, complete with descriptions, technologies used, and links to live demos and source code where applicable.
+- **Contact Information**: A section that allows visitors to reach out to me for potential collaborations or inquiries.
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Responsive Design**: The website is fully responsive, ensuring a seamless experience across devices, from desktops to mobile phones.
+- **Dynamic Visitor Count**: Tracks unique visitors using Redis, providing insights into site traffic and engagement.
+- **Interactive Command Menu**: Easily navigate through sections of the portfolio using a command menu triggered by keyboard shortcuts (Ctrl + K).
+- **Dark Mode Support**: The site supports light and dark themes, enhancing user experience based on individual preferences.
+- **Accessibility**: The website is completely responsive and designed with accessibility in mind as much as possible, ensuring that all users can navigate and interact with the content effectively. I'm constantly updating the site to make it even more accessible to the users.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This portfolio leverages a variety of modern web technologies, including:
 
-## Deploy on Vercel
+- **Frontend**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  - **React**: A JavaScript library for building user interfaces, allowing for a dynamic and interactive experience.
+  - **Next.js**: A React framework that enables server-side rendering and static site generation, improving performance and SEO.
+  - **TypeScript**: A superset of JavaScript that adds static types, enhancing code quality and maintainability.
+  - **Tailwind CSS**: A utility-first CSS framework that allows for rapid UI development with a focus on customization and responsiveness.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Backend**:
+
+  - **Redis**: Used for tracking unique visitors, providing a fast and efficient way to manage visitor data.
+
+- **Deployment**:
+
+  - **Vercel**: A cloud platform for static sites and serverless functions, ensuring fast load times and easy deployment.
+
+- **Icons**:
+
+  - **Lucide React**: A collection of SVG icons that enhance the visual appeal of the site.
+
+- **Animations**:
+  - **Motion**: A library for animations that provides smooth transitions and interactions throughout the site.
+
+## Project Structure
+
+The project is organized into several key components, each serving a specific purpose:
+
+- **Components**: Contains reusable UI components such as `VisitorCount`, `Footer`, `Hero`, `Projects`, and `Navigation`.
+- **Data**: Holds the `RESUME_DATA` file, which contains all the static data used throughout the site, including personal information, project details, and contact information.
+- **API**: Contains the `track-visitor` API route, which handles visitor tracking and returns the unique visitor count.
+- **Styles**: Includes global styles defined in `globals.css`, ensuring a consistent look and feel across the site.
+
+## License
+
+This project is under a private license, and it is not open for contributions. All rights are reserved. Thank you for visiting my portfolio! If you have any questions or want to get in touch, feel free to reach out through the contact information provided on the website. Enjoy exploring my projects and blogs!
