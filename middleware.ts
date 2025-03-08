@@ -18,11 +18,12 @@ export async function middleware(req: NextRequest) {
 
   // Combine IP & User-Agent for better uniqueness
   const uniqueIdentifier = `${ip}:${userAgent}`;
-  console.log(uniqueIdentifier);
   const hashedIdentifier = await hashString(uniqueIdentifier);
 
   // Store in Redis HyperLogLog
   await redis.pfadd("unique_visitors", hashedIdentifier);
+
+  await redis.sadd("visitor_ips", ip);
 
   return NextResponse.next();
 }

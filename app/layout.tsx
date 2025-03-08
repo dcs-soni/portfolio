@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import { ThemeProvider } from "@/app/theme-provider";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({
@@ -38,6 +39,7 @@ export default function RootLayout({
           <Navigation />
           <main className="mx-auto">{children}</main>
           <Footer />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

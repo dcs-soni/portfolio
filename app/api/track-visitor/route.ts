@@ -1,9 +1,73 @@
 import { NextResponse } from "next/server";
-
+import { headers } from "next/headers";
 import redis from "@/lib/redis";
 
 export async function GET() {
-  const uniqueVisitors = await redis.pfcount("unique_visitors");
+  try {
+    const headersList = await headers();
+    const userAgent = headersList.get("user-agent") || "";
 
-  return NextResponse.json({ success: true, uniqueVisitors });
+    // Skip bots and crawlers
+    const isBot = (() => {
+      if (!userAgent) return true; // No user agent is suspicious
+
+      const botPatterns =
+        /bot|crawler|spider|headless|puppet|chrome-lighthouse|googlebot|bingbot|yandex|baidu/i;
+      return botPatterns.test(userAgent);
+    })();
+
+    // Get the IP for additional verification
+    const ip = headersList.get("x-forwarded-for")?.split(",")[0] || "unknown";
+
+    console.log(ip);
+
+    // Only count if not a bot and has valid IP
+    if (!isBot && ip !== "unknown") {
+      const key = `visitor:${ip}`;
+      const exists = await redis.exists(key);
+
+      if (!exists) {
+        // Store in Redis with 24h expiration
+        await redis
+          .multi()
+          .pfadd("unique_visitors", ip)
+          .setex(key, 86400, "1") // 24h rate limiting per IP
+          .exec();
+
+        // Log legitimate visits in development
+        if (process.env.NODE_ENV === "development") {
+          console.log("New visitor:", { ip, userAgent });
+        }
+      }
+    } else if (process.env.NODE_ENV === "development") {
+      // Log blocked attempts in development
+      console.log("Blocked visitor:", {
+        ip,
+        userAgent,
+        reason: isBot ? "Bot detected" : "Invalid IP",
+      });
+    }
+
+    const uniqueVisitors = await redis.pfcount("unique_visitors");
+
+    return NextResponse.json({
+      success: true,
+      uniqueVisitors,
+      // Include debug info only in development
+      debug:
+        process.env.NODE_ENV === "development"
+          ? {
+              isBot,
+              userAgent: userAgent.substring(0, 100), // Truncate for logging
+              ip,
+            }
+          : undefined,
+    });
+  } catch (error) {
+    console.error("Error tracking visitor:", error);
+    return NextResponse.json(
+      { success: false, error: "Failed to track visitor" },
+      { status: 500 }
+    );
+  }
 }
