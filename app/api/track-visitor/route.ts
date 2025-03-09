@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
     // Get current date for key
     const today = new Date().toISOString().split("T")[0];
     const visitorKey = `visitors:${today}`;
+    const totalVisitorKey = "total_unique_visitors";
 
     // If this is a new visit and we should track it
     if (shouldTrack) {
@@ -25,15 +26,18 @@ export async function GET(request: NextRequest) {
 
       // Add to Redis set (which automatically handles uniqueness)
       await redis.sadd(visitorKey, ip);
+      await redis.sadd(totalVisitorKey, ip);
     }
 
     // Get current count regardless of whether we tracked or not
     const uniqueVisitors = await redis.scard(visitorKey);
+    const totalUniqueVisitors = await redis.scard(totalVisitorKey);
 
     return new Response(
       JSON.stringify({
         success: true,
         uniqueVisitors,
+        totalUniqueVisitors,
         date: today,
       }),
       {

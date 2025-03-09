@@ -17,6 +17,7 @@ function setCookie(name: string, value: string, days: number) {
 
 export default function VisitorCount() {
   const [visitorCount, setVisitorCount] = useState<number>(0);
+  const [totalVisitorCount, setTotalVisitorCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function VisitorCount() {
         const data = await response.json();
         if (data.success) {
           setVisitorCount(data.uniqueVisitors);
+          setTotalVisitorCount(data.totalUniqueVisitors);
 
           // Only set cookie if it was a new visit
           if (isNewVisit) {
@@ -59,7 +61,8 @@ export default function VisitorCount() {
 
   return (
     <span className="text-zinc-700 dark:text-gray-400 text-sm">
-      {visitorCount.toLocaleString()} unique visitors
+      {/* {visitorCount.toLocaleString()} unique visitors today */}
+      {totalVisitorCount.toLocaleString()} unique visitors
     </span>
   );
 }
