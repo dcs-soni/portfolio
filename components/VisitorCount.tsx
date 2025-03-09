@@ -60,9 +60,15 @@ export default function VisitorCount() {
   if (isLoading) return null;
 
   return (
+    <>
+    <span className="hidden md:hidden lg:hidden text-zinc-700 dark:text-gray-400 text-sm">
+      {visitorCount.toLocaleString()} unique visitors today
+    </span>
     <span className="text-zinc-700 dark:text-gray-400 text-sm">
-      {/* {visitorCount.toLocaleString()} unique visitors today */}
       {totalVisitorCount.toLocaleString()} unique visitors
     </span>
+    </>
+
+
   );
 }
