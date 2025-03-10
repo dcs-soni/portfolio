@@ -72,11 +72,19 @@ export default function Experience() {
                           <ExternalLink className="w-3 h-3 inline-block ml-2 group-hover:text-zinc-800 dark:group-hover:text-zinc-100 text-zinc-400 dark:text-zinc-700 duration-500 ease-in-out" />
                         </Link>
                         {/* <span className="text-xs">{exp.brand}</span> */}
-                        <span
-                          className="text-sm text-zinc-500 dark:text-gray-400"
-                          role="doc-subtitle">
-                          {exp.title}
-                        </span>
+                        <div className="flex flex-row justify-between text-sm text-zinc-500 dark:text-gray-400">
+                          <span className="" role="doc-subtitle">
+                            {exp.title}
+                          </span>
+                          <div>
+                            {exp.badges.map((badge, index) => (
+                              <span key={index} className="px-2">
+                                {badge}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
                         <ul
                           className="mt-3 space-y-2 pl-4 md:pl-4"
                           aria-label={`Responsibilities at ${exp.company}`}>

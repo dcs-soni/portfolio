@@ -20,7 +20,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: false, amount: 0.2 }}>
-          <h2 className="sm:text-md md:text-lg font-semibold mb-12 text-zinc-100">
+          <h2 className="sm:text-md md:text-lg font-semibold mb-12 text-zinc-900 dark:text-zinc-100">
             PROJECTS
           </h2>
 
@@ -32,14 +32,14 @@ export default function Projects() {
               <motion.div
                 key={index}
                 onClick={() => window.open(project.link, "_blank")}
-                className="block group rounded-lg overflow-hidden shadow-lg"
+                className="block group rounded-lg overflow-hidden shadow-lg h-full"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 role="listitem"
                 aria-label={`${project.title} - ${project.description}`}>
-                <div className="relative overflow-hidden">
+                <div className="flex flex-col h-full">
                   {/* Project Image */}
                   <div className="aspect-[4/3] relative overflow-hidden">
                     <Image
@@ -48,20 +48,20 @@ export default function Projects() {
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       // className="object-cover transition-transform duration-500 group-hover:scale-105 bg-gradient-to-t from-zinc-900/60 via-transparent to-transparent "
-                      className="cursor-pointer transition-transform duration-500 group-hover:scale-105 object-cover [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.7),rgba(0,0,0,0)_90%)]"
+                      className=" cursor-pointer transition-transform duration-500 group-hover:scale-105 object-cover [mask-image:linear-gradient(to_bottom,rgba(255,255,255,0.9),rgba(255,255,255,0)_95%)] dark:[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.7),rgba(0,0,0,0)_95%)]"
                     />
                   </div>
                   {/* Project Info - Dark bottom section */}
-                  <div className="px-6 pb-6  bottom-0 left-0 w-full h-50 bg-gradient-to-t from-zinc-900/10 via-transparent to-transparent  ">
-                    <h3 className="text-xl font-light mb-2 text-zinc-100">
+                  <div className="px-6 pb-6 w-full flex flex-grow flex-col bg-gradient-to-t from-zinc-800/10 via-transparent to-transparent  ">
+                    <h3 className="text-xl font-normal mb-2 text-zinc-900 dark:text-zinc-100 ">
                       {project.title}
                     </h3>
-                    <p className="text-zinc-400 text-sm mb-4">
+                    <p className="text-zinc-400 text-sm mb-4 h-[60px] overflow-hidden text-ellipsis break-words line-clamp-3">
                       {project.description}
                     </p>
-                    <div className="mt-4 pt-4 flex items-center justify-between ">
+                    <div className="mt-auto pt-4 flex items-center justify-between ">
                       <p
-                        className="text-xs text-zinc-500 "
+                        className="text-xs text-zinc-500 w-60 "
                         aria-label="Technologies used">
                         {project.techStack.map((tech, index) => (
                           <span
