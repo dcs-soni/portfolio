@@ -7,6 +7,7 @@ import { Menu, X, Command, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import ContactModal from "./ContactModal";
 import { CommandMenu } from "./Command";
+import { RESUME_DATA } from "@/data/RESUME_DATA";
 
 interface LinksProps {
   name: string;
@@ -46,7 +47,7 @@ export default function Navigation() {
     { name: "Projects", href: "#projects" },
     {
       name: "Space",
-      href: "https://divyanshusoni.notion.site/Space-1a74657276b48095baa1e9e22802b363",
+      href: `${RESUME_DATA.constants.space}`,
     },
     { name: "Contact", onClick: () => setIsModalOpen(true) },
   ];
@@ -69,7 +70,7 @@ export default function Navigation() {
             href="#"
             className="text-lg font-medium"
             aria-label="Go to home">
-            <motion.span className="font-bold text-zinc-600 dark:text-zinc-400 transition-colors hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500  dark:hover:text-transparent dark:hover:bg-clip-text darl:hover:bg-gradient-to-br dark:hover:from-blue-500 dark:hover:to-purple-500">
+            <motion.span className="font-bold text-zinc-600 dark:text-zinc-400 transition-colors duration-200 hover:bg-clip-text hover:text-transparent dark:hover:text-transparent hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500">
               DS
             </motion.span>
           </Link>
