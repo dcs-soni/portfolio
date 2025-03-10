@@ -43,26 +43,33 @@ export const RESUME_DATA = {
   aboutMe: {
     description: {
       descriptionOne:
-        "I've always been fascinated by how technology works—how systems communicate, how products are built, and how complex problems are solved through code. My journey wasn't traditional, but that's what makes it exciting.",
+        "I've always been fascinated by how technology works—how systems communicate, how products are built, and how complex problems are solved through code. My journey into tech wasn't traditional, but that's what makes it exciting. I enjoy breaking down technical challenges, optimizing workflows, and writing clean, efficient code.",
 
       descriptionTwo:
-        "Starting in Electronics & Communication Engineering, I explored IoT, Arduino, and Raspberry Pi, building automation and robotics projects. During the COVID lockdown, I pivoted to software development, leading me to JetBrains Academy. There, I worked with a global team to create interactive projects, automated test cases, and structured learning experiences for 500k+ learners. I contributed to project design, code reviews, and debugging, ensuring high-quality technical content and coding practices.",
+        "I started in Electronics & Communication Engineering, exploring IoT, Arduino, and Raspberry Pi to build automation and robotics projects. During the COVID lockdown, I transitioned into software development, focusing on full-stack web applications. Over time, I’ve worked extensively with technologies like JavaScript, TypeScript, React, Next.js, and Node.js, integrating databases like PostgreSQL and MongoDB with Prisma and Mongoose ORM for efficient data management.",
 
       descriptionThree:
-        "I wrote automated test cases using hs-test-web, JetBrains' internal testing library, enabling: Validation of user solutions inside JetBrains IDEs, Testing of web applications through real-world interactions, DOM manipulations, and API calls, and, Instant feedback to learners, improving code quality and problem-solving skills.",
-
-      descriptionFour:
-        "I thrive in async, distributed teams, adapting quickly to new technologies as per project needs. Beyond testing, I review code, fix broken test cases, and refine projects to enhance efficiency. Currently, I focus on building full-stack AI applications, solving complex engineering challenges, and optimizing workflows.",
+        "I thrive in async, distributed teams, adapting quickly to new technologies based on project requirements. My recent focus has been on AI-powered applications, where I integrate AI models into web platforms, leveraging embeddings for intelligent search and building scalable, data-driven solutions. I'm always upskilling—whether it's exploring Redis for caching, diving deeper into DevOps practices with Docker and CI/CD pipelines, or experimenting with new AI-driven tools to improve efficiency and automation.",
     },
     techStack: [
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "Tailwind",
       "JavaScript",
       "TypeScript",
-      "React",
+      "React.js",
       "Node.js",
+      "Express",
       "MongoDB",
+      "SQL",
       "Python",
       "Docker",
       "PostgreSQL",
+      "Redis",
+      "ChromaDB",
+      "Git",
+      "GitHub",
     ],
   },
 
@@ -72,7 +79,7 @@ export const RESUME_DATA = {
       brand: "Hyperskill",
       link: "https://academy.jetbrains.com",
       badges: ["Remote", "Freelance"],
-      title: "Frontend Expert",
+      title: "Frontend ",
       start: "Oct 2021",
       end: "Present",
       description: [
@@ -82,7 +89,7 @@ export const RESUME_DATA = {
 
         "Using hs-test-web, I automated testing for dynamic web apps—simulating user interactions, DOM manipulations, and HTTP requests—enhancing feedback mechanisms for learners inside JetBrains IDEs.",
 
-        "I also refactored and debugged complex projects, aligning them with best practices to improve efficiency, maintainability, and the overall learning experience.",
+        "I also refactored and debugged complex projects, along with technical articles and code exercises, aligning them with best practices to improve efficiency, maintainability, and the overall learning experience.",
       ],
     },
 
@@ -108,32 +115,40 @@ export const RESUME_DATA = {
 
   projects: [
     {
-      title: "StashIt",
-      image:
-        "https://images.pexels.com/photos/30840677/pexels-photo-30840677/free-photo-of-scenic-seascape-with-rugged-rock-formations.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      link: "https://www.google.com",
-      sourceCode: "https:www/facebook.com",
-      description: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      techStack: ["React", "TypeScript", "Node.js", "MongoDB"],
+      title: "Portfolio",
+      image: "/port.png",
+      link: "www.divyanshusoni.com",
+      sourceCode: "https://github.com/dcs-soni/portfolio",
+      description:
+        "A modern, responsive Next.js site with dark mode, showcasing my skills, projects, and experiences.",
+      techStack: ["Next.js", "TypeScript", "Tailwind", "Redis"],
     },
 
     {
-      title: "Scriblio",
-      image:
-        "https://images.pexels.com/photos/30840677/pexels-photo-30840677/free-photo-of-scenic-seascape-with-rugged-rock-formations.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "StashIt",
+      image: "/stashit.png",
       link: "https://www.google.com",
-      sourceCode: "https:www/facebook.com",
-      description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-      techStack: ["React", "NextJS"],
+      sourceCode: "https://github.com/dcs-soni/stash-it",
+      description:
+        "An app for storing and sharing content with categorization, search, and AI-powered results using embeddings and vector search.",
+      techStack: ["React.js", "TypeScript", "Chroma", "Inference"],
     },
     {
-      title: "StashIt",
-      image:
-        "https://images.pexels.com/photos/30840677/pexels-photo-30840677/free-photo-of-scenic-seascape-with-rugged-rock-formations.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      link: "https://www.google.com",
-      sourceCode: "https:www/facebook.com",
-      description: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      techStack: ["React", "TypeScript", "Node.js", "MongoDB"],
+      title: "TrendsAI",
+      image: "/trendsai.png",
+      link: "https://trendsai.vercel.app/",
+      sourceCode: "https://github.com/dcs-soni/trendsAI",
+      description:
+        "trendsAI is a platform designed to explore and discover the most innovative AI applications and models. Users can join the community to stay ahead in the AI revolution, submit their own AI projects, and engage with other AI enthusiasts.",
+      techStack: ["Next.js", "PostgreSQL", "Node.js", "Zustand"],
     },
+    // {
+    //   title: "Scriblio",
+    //   image: "",
+    //   link: "https://www.google.com",
+    //   sourceCode: "https:www/facebook.com",
+    //   description: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    //   techStack: ["React", "TypeScript", "Node.js", "MongoDB"],
+    // },
   ],
 };
