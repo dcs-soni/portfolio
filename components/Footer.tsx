@@ -81,7 +81,7 @@ export default function Footer() {
           <motion.a
             href="#home"
             aria-label="Back to top"
-            className="text-zinc-700 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white transition-colors text-sm"
+            className="text-zinc-700 dark:text-gray-400 transition-colors duration-200 hover:text-transparent dark:hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500 text-sm"
             whileHover={{ scale: 1.05 }}>
             Made by DS
           </motion.a>
