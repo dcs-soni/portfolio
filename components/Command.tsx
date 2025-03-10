@@ -38,7 +38,7 @@ const socialItems = [
 
 const sections = [
   { section: "Home", url: "#home" },
-  { section: "ABout", url: "#about" },
+  { section: "About", url: "#about" },
   { section: "Experience", url: "#experience" },
   { section: "Projects", url: "#projects" },
   { section: "Space", url: `${RESUME_DATA.constants.space}` },
@@ -66,63 +66,62 @@ export const CommandMenu = () => {
   };
 
   return (
-    <>
-      {open && (
-        <div className="fixed inset-0 bg-zinc-600/5 dark:bg-zinc-600/5 backdrop-blur-sm z-30" />
-      )}
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <Dialog.Portal>
+        {/* Dialog overlay that covers the entire viewport */}
+        <Dialog.Overlay className="fixed inset-0 bg-zinc-600/5 dark:bg-zinc-600/5 backdrop-blur-sm z-30" />
 
-      <Command.Dialog
-        open={open}
-        onOpenChange={setOpen}
-        label="Global Command Menu"
-        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[400px] w-full bg-white dark:bg-zinc-900 rounded-xl shadow-2xl border border-zinc-200 dark:border-zinc-800 z-40 ">
-        {/* Add Dialog.DialogTitle for accessibility*/}
-        <Dialog.DialogTitle className="sr-only">
-          Command Menu
-        </Dialog.DialogTitle>
+        <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[400px] w-full z-40">
+          <Command
+            label="Global Command Menu"
+            className="w-full bg-white dark:bg-zinc-900 rounded-xl shadow-2xl border border-zinc-200 dark:border-zinc-800">
+            <Dialog.Title className="sr-only">Command Menu</Dialog.Title>
 
-        <Command.Input
-          placeholder="Type a command or search..."
-          className="w-full px-4 py-3 text-sm border-b border-zinc-200 dark:border-zinc-800 outline-none bg-transparent text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500 dark:placeholder:text-zinc-400"
-        />
-        <Command.List className="max-h-[300px] overflow-y-auto p-2">
-          <Command.Empty className="px-2 py-3 text-sm text-zinc-500 dark:text-zinc-400">
-            No results found.
-          </Command.Empty>
+            <Command.Input
+              placeholder="Type a command or search..."
+              className="w-full px-4 py-3 text-sm border-b border-zinc-200 dark:border-zinc-800 outline-none bg-transparent text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500 dark:placeholder:text-zinc-400"
+            />
 
-          <Command.Group
-            heading="Navigation"
-            className="px-2 py-1 text-xs text-zinc-500 dark:text-zinc-400 font-medium">
-            {sections.map(({ section, url }) => (
-              <CommandItem
-                key={section}
-                onSelect={() => handleNavigation(`${url}`)}>
-                {section}
-              </CommandItem>
-            ))}
-          </Command.Group>
+            <Command.List className="max-h-[300px] overflow-y-auto p-2">
+              <Command.Empty className="px-2 py-3 text-sm text-zinc-500 dark:text-zinc-400">
+                No results found.
+              </Command.Empty>
 
-          <Command.Group
-            heading="Social"
-            className="mt-2 px-2 py-1 text-xs text-zinc-500 dark:text-zinc-400 font-medium">
-            {socialItems.map(({ name, icon, url }) => (
-              <CommandItem
-                key={name}
-                onSelect={() => window.open(url, "_blank")}>
-                {icon} {name}
-              </CommandItem>
-            ))}
+              <Command.Group
+                heading="Navigation"
+                className="px-2 py-1 text-xs text-zinc-500 dark:text-zinc-400 font-medium">
+                {sections.map(({ section, url }) => (
+                  <CommandItem
+                    key={section}
+                    onSelect={() => handleNavigation(`${url}`)}>
+                    {section}
+                  </CommandItem>
+                ))}
+              </Command.Group>
 
-            <CommandItem
-              onSelect={() =>
-                (window.location.href = `mailto:${RESUME_DATA.contact.email}`)
-              }>
-              <Mail className="w-4 h-4" />
-              Email
-            </CommandItem>
-          </Command.Group>
-        </Command.List>
-      </Command.Dialog>
-    </>
+              <Command.Group
+                heading="Social"
+                className="mt-2 px-2 py-1 text-xs text-zinc-500 dark:text-zinc-400 font-medium">
+                {socialItems.map(({ name, icon, url }) => (
+                  <CommandItem
+                    key={name}
+                    onSelect={() => window.open(url, "_blank")}>
+                    {icon} {name}
+                  </CommandItem>
+                ))}
+
+                <CommandItem
+                  onSelect={() =>
+                    (window.location.href = `mailto:${RESUME_DATA.contact.email}`)
+                  }>
+                  <Mail className="w-4 h-4" />
+                  Email
+                </CommandItem>
+              </Command.Group>
+            </Command.List>
+          </Command>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 };
