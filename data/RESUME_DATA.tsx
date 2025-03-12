@@ -117,7 +117,7 @@ export const RESUME_DATA = {
     {
       title: "Portfolio",
       image: "/port.png",
-      link: "www.divyanshusoni.com",
+      link: "https://divyanshusoni.com",
       sourceCode: "https://github.com/dcs-soni/portfolio",
       description:
         "A modern, responsive Next.js site with dark mode, showcasing my skills, projects, and experiences.",
@@ -127,11 +127,11 @@ export const RESUME_DATA = {
     {
       title: "StashIt",
       image: "/stashit.png",
-      link: "https://www.google.com",
+      link: "https://github.com/dcs-soni/stash-it",
       sourceCode: "https://github.com/dcs-soni/stash-it",
       description:
         "An app for storing and sharing content with categorization, search, and AI-powered results using embeddings and vector search.",
-      techStack: ["React.js", "TypeScript", "Chroma", "Inference"],
+      techStack: ["React.js", "TypeScript", "Chroma", "MongoDB"],
     },
     {
       title: "TrendsAI",
