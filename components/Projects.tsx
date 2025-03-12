@@ -25,14 +25,14 @@ export default function Projects() {
           </h2>
 
           <div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 "
             role="list"
             aria-label="List of projects">
             {RESUME_DATA.projects.map((project, index) => (
               <motion.div
                 key={index}
                 onClick={() => window.open(project.link, "_blank")}
-                className="block group rounded-lg overflow-hidden shadow-lg h-full"
+                className="block group rounded-lg overflow-hidden shadow-lg h-full hover:border-0 hover:border-t-zinc-700"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -71,7 +71,7 @@ export default function Projects() {
                           </span>
                         ))}
                       </p>
-                      <Link href={project.link}>
+                      <Link href={project.sourceCode}>
                         <GitHubIcon className="h-4 w-4 text-zinc-500" />
                       </Link>
                     </div>

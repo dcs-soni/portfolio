@@ -172,7 +172,8 @@ export default function Navigation() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
+            // transition={{ duration: 0.2 }}
+            transition={{ delay: links.length * 0.1 }}
             viewport={{ once: false, amount: 0.2 }}
             role="dialog"
             aria-label="Mobile menu">
@@ -184,6 +185,7 @@ export default function Navigation() {
                 link.href ? (
                   link.href.startsWith("http") ? (
                     <Link
+                      onClick={() => setIsOpen(false)}
                       key={link.name}
                       href={link.href}
                       target="_blank"
@@ -193,6 +195,7 @@ export default function Navigation() {
                     </Link>
                   ) : (
                     <Link
+                      onClick={() => setIsOpen(false)}
                       key={link.name}
                       href={link.href}
                       className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
