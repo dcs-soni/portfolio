@@ -5,6 +5,15 @@ import redis from "@/lib/redis";
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
 
+async function hashIP(ip: string) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(ip);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+
 // POST handles the actual visitor tracking
 export async function GET(request: NextRequest) {
   try {
@@ -24,9 +33,11 @@ export async function GET(request: NextRequest) {
         request.headers.get("x-real-ip") ||
         "unknown";
 
+      const hashedIP = hashIP(ip);
+
       // Add to Redis set (which automatically handles uniqueness)
-      await redis.sadd(visitorKey, ip);
-      await redis.sadd(totalVisitorKey, ip);
+      await redis.sadd(visitorKey, hashedIP);
+      await redis.sadd(totalVisitorKey, hashedIP);
     }
 
     // Get current count regardless of whether we tracked or not
