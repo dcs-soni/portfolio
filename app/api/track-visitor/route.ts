@@ -1,9 +1,14 @@
 import { NextRequest } from "next/server";
 import redis from "@/lib/redis";
+import crypto from "crypto";
 
 // Force dynamic execution
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
+
+function hashIP(ip: string) {
+  return crypto.createHash("sha256").update(ip).digest("hex");
+}
 
 // POST handles the actual visitor tracking
 export async function GET(request: NextRequest) {
@@ -24,9 +29,11 @@ export async function GET(request: NextRequest) {
         request.headers.get("x-real-ip") ||
         "unknown";
 
+      const hashedIP = hashIP(ip);
+
       // Add to Redis set (which automatically handles uniqueness)
-      await redis.sadd(visitorKey, ip);
-      await redis.sadd(totalVisitorKey, ip);
+      await redis.sadd(visitorKey, hashedIP);
+      await redis.sadd(totalVisitorKey, hashedIP);
     }
 
     // Get current count regardless of whether we tracked or not
