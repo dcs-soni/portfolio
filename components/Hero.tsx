@@ -33,12 +33,19 @@ export default function Hero() {
 
         <motion.p
           role="doc-subtitle"
-          className="text-xs md:text-sm text-zinc-700 dark:text-zinc-400 mb-6 tracking-wider"
+          className="relative text-xs md:text-sm text-zinc-700 dark:text-zinc-400 mb-6 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: false, amount: 0.2 }}>
           {RESUME_DATA.title}
+
+          {/* Available for hire section  */}
+          <span className="absolute ml-2 px-3 py-[1px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full inline-flex items-center animate-slideIn opacity-100">
+            <span className="text-[0.5rem] font-medium tracking-wide text-white">
+              AVAILABLE FOR HIRE
+            </span>
+          </span>
         </motion.p>
 
         <motion.h2

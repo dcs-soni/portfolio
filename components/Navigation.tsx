@@ -169,11 +169,11 @@ export default function Navigation() {
         {isOpen && (
           <motion.div
             className="fixed inset-0 w-full z-30 md:hidden bg-zinc-50 dark:bg-zinc-950"
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             // transition={{ duration: 0.2 }}
-            transition={{ delay: links.length * 0.1 }}
+            transition={{ duration: links.length * 0.1 }}
             viewport={{ once: false, amount: 0.2 }}
             role="dialog"
             aria-label="Mobile menu">
@@ -216,7 +216,7 @@ export default function Navigation() {
                 className="flex gap-6 mt-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: links.length * 0.1 }}
+                transition={{ duration: links.length * 0.1 }}
                 viewport={{ once: false, amount: 0.2 }}>
                 <motion.button
                   whileHover={{ scale: 1.1 }}
