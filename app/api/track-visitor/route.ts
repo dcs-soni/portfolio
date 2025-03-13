@@ -1,13 +1,17 @@
 import { NextRequest } from "next/server";
 import redis from "@/lib/redis";
-import crypto from "crypto";
 
 // Force dynamic execution
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
 
-function hashIP(ip: string) {
-  return crypto.createHash("sha256").update(ip).digest("hex");
+async function hashIP(ip: string) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(ip);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
 }
 
 // POST handles the actual visitor tracking
