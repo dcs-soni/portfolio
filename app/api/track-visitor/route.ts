@@ -20,9 +20,6 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const shouldTrack = searchParams.get("track") === "true";
 
-    console.log("Search params", searchParams);
-    console.log("Should track", shouldTrack);
-
     // Get current date for key
     const today = new Date().toISOString().split("T")[0];
     const visitorKey = `visitors:${today}`;
@@ -30,7 +27,7 @@ export async function GET(request: NextRequest) {
 
     // const isLocalhost = process.env.NODE_ENV === "development";
 
-    // If this is a new visit and we should track it
+    // If this is a new visit track it
     if (shouldTrack) {
       // Get IP address (or a fingerprint if available)
       const ip =
@@ -38,17 +35,11 @@ export async function GET(request: NextRequest) {
         request.headers.get("x-real-ip") ||
         "unknown";
 
-      console.log("Exraacted ip: ", ip);
-
       const hashedIP = await hashIP(ip);
 
-      console.log("Hashed IP:", hashedIP);
-
       // Add to Redis set (which automatically handles uniqueness)
-      const addVisitorResult = await redis.sadd(visitorKey, hashedIP);
-      console.log(addVisitorResult);
-      const addTotalVisitorResult = await redis.sadd(totalVisitorKey, hashedIP);
-      console.log(addTotalVisitorResult);
+      await redis.sadd(visitorKey, hashedIP);
+      await redis.sadd(totalVisitorKey, hashedIP);
     }
 
     // Get current count regardless of whether we tracked or not
