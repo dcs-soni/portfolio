@@ -14,35 +14,50 @@ async function hashIP(ip: string) {
     .join("");
 }
 
-// POST handles the actual visitor tracking
+// handles the actual visitor tracking
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const shouldTrack = searchParams.get("track") === "true";
+
+    console.log("Search params", searchParams);
+    console.log("Should track", shouldTrack);
 
     // Get current date for key
     const today = new Date().toISOString().split("T")[0];
     const visitorKey = `visitors:${today}`;
     const totalVisitorKey = "total_unique_visitors";
 
+    // const isLocalhost = process.env.NODE_ENV === "development";
+
     // If this is a new visit and we should track it
     if (shouldTrack) {
       // Get IP address (or a fingerprint if available)
       const ip =
+        request.ip ||
         request.headers.get("x-forwarded-for") ||
         request.headers.get("x-real-ip") ||
         "unknown";
 
-      const hashedIP = hashIP(ip);
+      console.log("Exraacted ip: ", ip);
+
+      const hashedIP = await hashIP(ip);
+
+      console.log("Hashed IP:", hashedIP);
 
       // Add to Redis set (which automatically handles uniqueness)
-      await redis.sadd(visitorKey, hashedIP);
-      await redis.sadd(totalVisitorKey, hashedIP);
+      const addVisitorResult = await redis.sadd(visitorKey, hashedIP);
+      console.log(addVisitorResult);
+      const addTotalVisitorResult = await redis.sadd(totalVisitorKey, hashedIP);
+      console.log(addTotalVisitorResult);
     }
 
     // Get current count regardless of whether we tracked or not
     const uniqueVisitors = await redis.scard(visitorKey);
+
+    console.log("Unique visitors ", uniqueVisitors);
     const totalUniqueVisitors = await redis.scard(totalVisitorKey);
+    console.log("Total unique visitors", totalUniqueVisitors);
 
     return new Response(
       JSON.stringify({
