@@ -37,6 +37,15 @@ export default function VisitorCount() {
           }
         );
 
+        // Development
+        // const response = await fetch("/api/track-visitor?track=true", {
+        //   method: "GET",
+        //   cache: "no-store",
+        //   headers: {
+        //     "x-forwarded-for": "192.168.1.120",
+        //   },
+        // });
+
         const data = await response.json();
         if (data.success) {
           setVisitorCount(data.uniqueVisitors);
@@ -61,14 +70,12 @@ export default function VisitorCount() {
 
   return (
     <>
-    <span className="hidden md:hidden lg:hidden text-zinc-700 dark:text-gray-400 text-sm">
-      {visitorCount.toLocaleString()} unique visitors today
-    </span>
-    <span className="text-zinc-700 dark:text-gray-400 text-sm">
-      {totalVisitorCount.toLocaleString()} unique visitors
-    </span>
+      <span className="hidden md:hidden lg:hidden text-zinc-700 dark:text-gray-400 text-sm">
+        {visitorCount.toLocaleString()} unique visitors today
+      </span>
+      <span className="text-zinc-700 dark:text-gray-400 text-sm">
+        {totalVisitorCount.toLocaleString()} unique visitors
+      </span>
     </>
-
-
   );
 }
