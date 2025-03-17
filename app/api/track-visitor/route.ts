@@ -34,8 +34,7 @@ export async function GET(request: NextRequest) {
     if (shouldTrack) {
       // Get IP address (or a fingerprint if available)
       const ip =
-        request.ip ||
-        request.headers.get("x-forwarded-for") ||
+        request.headers.get("x-forwarded-for")?.split(",")[0] ||
         request.headers.get("x-real-ip") ||
         "unknown";
 
