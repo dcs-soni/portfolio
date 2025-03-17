@@ -71,7 +71,7 @@ export default function Projects() {
                           </span>
                         ))}
                       </p>
-                      <Link href={project.sourceCode}>
+                      <Link href={project.sourceCode} target="_blank">
                         <GitHubIcon className="h-4 w-4 text-zinc-500" />
                       </Link>
                     </div>
