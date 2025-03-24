@@ -31,7 +31,6 @@ export default function Projects() {
             {RESUME_DATA.projects.map((project, index) => (
               <motion.div
                 key={index}
-                onClick={() => window.open(project.link, "_blank")}
                 className="block group rounded-lg overflow-hidden shadow-lg h-full hover:border-0 hover:border-t-zinc-700"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -44,6 +43,7 @@ export default function Projects() {
                   <div className="aspect-[4/3] relative overflow-hidden">
                     <Image
                       src={project.image}
+                      onClick={() => window.open(project.link, "_blank")}
                       alt={`Preview of ${project.title}`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
