@@ -142,6 +142,18 @@ export const RESUME_DATA = {
         "trendsAI is a platform designed to explore and discover the most innovative AI applications and models. Users can join the community to stay ahead in the AI revolution, submit their own AI projects, and engage with other AI enthusiasts.",
       techStack: ["Next.js", "PostgreSQL", "Node.js", "Zustand"],
     },
+
+    {
+      title: "VaultKey",
+      image: "/vaultkey.png",
+      link: "https://vault-key.vercel.app",
+      sourceCode: "https://github.com/dcs-soni/vault-key",
+      description:
+        "vaultKey is a secure password management app that helps you store and organize your passwords effortlessly.",
+
+      techStack: ["React", "Dexie", "TypeScript", "Magic SDK"],
+    },
+
     // {
     //   title: "Scriblio",
     //   image: "",
