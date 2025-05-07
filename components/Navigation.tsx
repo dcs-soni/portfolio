@@ -65,15 +65,18 @@ export default function Navigation() {
             : "py-5 bg-transparent"
         }`}
         role="banner">
-        <div className="container mx-auto flex items-center justify-between md:max-w-7xl">
-          <Link
+        <div
+          className={`container mx-auto flex items-center justify-between max-w-s md:max-w-2xl md:border rounded-lg px-2 md:px-8  shadow-slate-800 dark:md:border-zinc-900 shadow-md ${
+            isScrolled ? "md:pr-14" : ""
+          }`}>
+          {/* <Link
             href="#"
-            className="text-lg font-medium"
+            className="hidden md:hidden text-lg font-medium"
             aria-label="Go to home">
             <motion.span className="font-bold text-zinc-600 dark:text-zinc-400 transition-colors duration-200 hover:bg-clip-text hover:text-transparent dark:hover:text-transparent hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500">
               DS
             </motion.span>
-          </Link>
+          </Link> */}
 
           {/* Desktop navigation */}
           <nav
@@ -82,23 +85,18 @@ export default function Navigation() {
             aria-label="Main navigation">
             {links.map((link) =>
               link.href ? (
-                link.href.startsWith("http") ? (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                ) : (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                )
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    link.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                  {link.name}
+                </Link>
               ) : (
                 <button
                   key={link.name}
@@ -110,7 +108,7 @@ export default function Navigation() {
             )}
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="md:flex items-center gap-4">
             {mounted && (
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -131,13 +129,20 @@ export default function Navigation() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-all flex justify-center items-center duration-100 ease-in-out relative`}
+              className={`hidden md:flex px-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-all justify-center items-center duration-100 ease-in-out relative`}
               aria-label="Open command menu">
-              <Command className="w-5 h-5" aria-hidden="true" />
+              <Command
+                className={`transition-all duration-100 ease-in-out ${
+                  isScrolled ? "w-5 h-5" : "w-4 h-4 -translate-y-1/3"
+                }`}
+                aria-hidden="true"
+              />
 
               <kbd
                 className={`text-xs whitespace-nowrap transition-all duration-100 ease-in-out absolute left-1/2 -translate-x-1/2 opacity-100 ${
-                  isScrolled ? "translate-y-15 translate-x-4" : "translate-y-6 "
+                  isScrolled
+                    ? "translate-y-15 translate-x-4"
+                    : "translate-y-3 text-[9px] "
                 }`}>
                 Ctrl K
               </kbd>
@@ -145,6 +150,39 @@ export default function Navigation() {
               <CommandMenu />
             </motion.button>
           </div>
+
+          <nav
+            className="flex md:hidden items-center space-x-6 font-semibold px-10"
+            role="navigation"
+            aria-label="Mobile navigation">
+            {links
+              .filter((link) =>
+                ["Home", "Projects", "Space"].includes(link.name)
+              )
+              .map((link) =>
+                link.href ? (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    target={link.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      link.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                ) : (
+                  <button
+                    key={link.name}
+                    onClick={link.onClick}
+                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                    {link.name}
+                  </button>
+                )
+              )}
+          </nav>
 
           {/* Mobile menu button */}
           <motion.button
