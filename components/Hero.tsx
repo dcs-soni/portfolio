@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import ContactModal from "@/components/ContactModal";
 import { RESUME_DATA } from "@/data/RESUME_DATA";
+import ScrollProgressBar from "./ScrollProgressBar";
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -15,15 +16,21 @@ export default function Hero() {
       id="home"
       aria-label="Introduction"
       role="region"
-      className="min-h-screen flex items-start justify-center py-24 px-6 md:py-8 md:mt-14 lg:py-14 lg:mt-10 sm:mt-18">
-      {/* Top multicolor line */}
-      <div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-500 to-purple-500 z-50 origin-left"
-        aria-hidden="true"
-      />
+      className="min-h-screen flex items-start justify-center pt-36 px-6 md:py-8 md:mt-14 lg:py-14 lg:mt-16 sm:mt-18">
+      {/* Progress bar */}
+      <ScrollProgressBar />
+
       <div className="max-w-5xl">
+        {/* <Image
+          src="/me.png"
+          alt="Profile"
+          width={150}
+          height={300}
+          className="absolute md:top-22 md:right-60 top-22 right-12 w-16 h-16 md:h-40 md:w-40 rounded-full  shadow-lg"
+        /> */}
+
         <motion.h1
-          className="text-2xl md:text-4xl text-zinc-900 font-semibold dark:text-zinc-100 mb-2 tracking-wider"
+          className="text-3xl md:text-5xl text-zinc-900 font-semibold dark:text-zinc-100 mb-2 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -33,7 +40,7 @@ export default function Hero() {
 
         <motion.p
           role="doc-subtitle"
-          className="relative text-xs md:text-sm text-zinc-700 dark:text-zinc-400 mb-6 tracking-wider"
+          className="relative text-xs md:text-sm text-zinc-700 dark:text-zinc-400 mb-6 tracking-widest"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -42,14 +49,14 @@ export default function Hero() {
 
           {/* Available for hire section  */}
           <span className="absolute ml-2 px-3 py-[1px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full inline-flex items-center animate-slideIn opacity-100">
-            <span className="text-[0.5rem] font-medium tracking-wide text-white">
+            <span className=" text-[7px] md:text-[9px] font-medium tracking-widest text-white">
               AVAILABLE FOR HIRE
             </span>
           </span>
         </motion.p>
 
         <motion.h2
-          className="text-zinc-900 dark:text-zinc-300 text-4xl md:text-5xl lg:text-7xl font-light leading-tight mb-8"
+          className="text-zinc-900 dark:text-zinc-300 text-3xl md:text-5xl lg:text-6xl font-light leading-tight my-10 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
