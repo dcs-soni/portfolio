@@ -142,7 +142,7 @@ export default function Navigation() {
                 className={`text-xs whitespace-nowrap transition-all duration-100 ease-in-out absolute left-1/2 -translate-x-1/2 opacity-100 ${
                   isScrolled
                     ? "translate-y-15 translate-x-4"
-                    : "translate-y-3 text-[9px] "
+                    : "translate-y-3 text-[8px] "
                 }`}>
                 Ctrl K
               </kbd>
