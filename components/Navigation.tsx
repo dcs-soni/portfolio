@@ -3,7 +3,19 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll } from "motion/react";
-import { Menu, X, Command, Moon, Sun } from "lucide-react";
+import {
+  Menu,
+  X,
+  Command,
+  Moon,
+  Sun,
+  Home,
+  UserRound,
+  BriefcaseBusiness,
+  SquareChevronRight,
+  OrbitIcon,
+  Mail,
+} from "lucide-react";
 import { useTheme } from "next-themes";
 import ContactModal from "./ContactModal";
 import { CommandMenu } from "./Command";
@@ -13,6 +25,7 @@ interface LinksProps {
   name: string;
   href?: string;
   onClick?: () => void;
+  logo?: React.ReactElement;
 }
 
 export default function Navigation() {
@@ -41,15 +54,36 @@ export default function Navigation() {
   // Return a non-interactive version for initial render
 
   const links: LinksProps[] = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
+    {
+      name: "Home",
+      href: "#home",
+      logo: <Home className="h-4 w-4 inline-flex " />,
+    },
+    {
+      name: "About",
+      href: "#about",
+      logo: <UserRound className="h-4 w-4 inline-flex" />,
+    },
+    {
+      name: "Experience",
+      href: "#experience",
+      logo: <BriefcaseBusiness className="h-4 w-4 inline-flex" />,
+    },
+    {
+      name: "Projects",
+      href: "#projects",
+      logo: <SquareChevronRight className="w-4 h-4 inline-flex" />,
+    },
     {
       name: "Space",
       href: `${RESUME_DATA.constants.space}`,
+      logo: <OrbitIcon className="w-4 h-4 inline-flex" />,
     },
-    { name: "Contact", onClick: () => setIsModalOpen(true) },
+    {
+      name: "Contact",
+      logo: <Mail className="w-4 h-4 inline-flex" />,
+      onClick: () => setIsModalOpen(true),
+    },
   ];
 
   const toggleTheme = () => {
@@ -66,7 +100,7 @@ export default function Navigation() {
         }`}
         role="banner">
         <div
-          className={`container mx-auto flex items-center justify-between max-w-s md:max-w-2xl md:border rounded-lg px-2 md:px-8  shadow-slate-800 dark:md:border-zinc-900 shadow-md ${
+          className={`container mx-auto flex items-center justify-between max-w-s md:max-w-3xl md:border rounded-lg px-2 md:px-8  shadow-slate-800 dark:md:border-zinc-900 shadow-md ${
             isScrolled ? "md:pr-14" : ""
           }`}>
           {/* <Link
@@ -94,21 +128,23 @@ export default function Navigation() {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                  className="text-xs flex items-center justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                  {link.logo}
                   {link.name}
                 </Link>
               ) : (
                 <button
                   key={link.name}
                   onClick={link.onClick}
-                  className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                  className="text-xs flex items-center justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                  {link.logo}
                   {link.name}
                 </button>
               )
             )}
           </nav>
 
-          <div className="md:flex items-center gap-4">
+          <div className="md:flex items-center gap-2">
             {mounted && (
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -117,7 +153,7 @@ export default function Navigation() {
                 aria-label={`Switch to ${
                   theme === "dark" ? "light" : "dark"
                 } mode`}
-                className="p-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                className="p-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors duration-200 ease-in-out">
                 {theme === "dark" ? (
                   <Sun className="w-5 h-5" aria-hidden="true" />
                 ) : (
@@ -129,12 +165,12 @@ export default function Navigation() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className={`hidden md:flex px-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-all justify-center items-center duration-100 ease-in-out relative`}
+              className={`hidden md:flex p-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-all justify-center items-center duration-100 ease-in-out relative`}
               aria-label="Open command menu">
               <Command
                 className={`transition-all duration-700 ease-in-out ${
                   isScrolled
-                    ? "w-5 h-5 translate-y-15 "
+                    ? "w-4 h-4 translate-y-15 "
                     : "w-4 h-4 -translate-y-1/3"
                 }`}
                 aria-hidden="true"
@@ -172,7 +208,8 @@ export default function Navigation() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                    className="text-xs flex items-center justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                    {link.logo}
                     {link.name}
                   </Link>
                 ) : (
@@ -180,6 +217,7 @@ export default function Navigation() {
                     key={link.name}
                     onClick={link.onClick}
                     className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                    {link.logo}
                     {link.name}
                   </button>
                 )
@@ -196,9 +234,9 @@ export default function Navigation() {
             aria-expanded={isOpen}
             aria-label="Toggle mobile menu">
             {isOpen ? (
-              <X className="w-6 h-6" aria-hidden="true" />
+              <X className="w-5 h-5" aria-hidden="true" />
             ) : (
-              <Menu className="w-6 h-6" aria-hidden="true" />
+              <Menu className="w-5 h-5" aria-hidden="true" />
             )}
           </motion.button>
         </div>
