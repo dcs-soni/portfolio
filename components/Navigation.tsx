@@ -132,17 +132,19 @@ export default function Navigation() {
               className={`hidden md:flex px-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-all justify-center items-center duration-100 ease-in-out relative`}
               aria-label="Open command menu">
               <Command
-                className={`transition-all duration-100 ease-in-out ${
-                  isScrolled ? "w-5 h-5" : "w-4 h-4 -translate-y-1/3"
+                className={`transition-all duration-700 ease-in-out ${
+                  isScrolled
+                    ? "w-5 h-5 translate-y-15 "
+                    : "w-4 h-4 -translate-y-1/3"
                 }`}
                 aria-hidden="true"
               />
 
               <kbd
-                className={`text-xs whitespace-nowrap transition-all duration-100 ease-in-out absolute left-1/2 -translate-x-1/2 opacity-100 ${
+                className={`text-xs whitespace-nowrap transition-all duration-500 ease-in-out absolute left-1/2 -translate-x-1/2 opacity-100 ${
                   isScrolled
                     ? "translate-y-15 translate-x-4"
-                    : "translate-y-3 text-[8px] "
+                    : "translate-y-2.5 text-[0.6rem]"
                 }`}>
                 Ctrl K
               </kbd>
