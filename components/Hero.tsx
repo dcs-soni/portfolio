@@ -16,7 +16,7 @@ export default function Hero() {
       id="home"
       aria-label="Introduction"
       role="region"
-      className="min-h-screen flex items-start justify-center pt-36 px-6 md:py-8 md:mt-14 lg:py-14 lg:mt-16 sm:mt-18">
+      className="min-h-screen flex items-start justify-center pt-32 px-6 md:py-8 md:mt-14 lg:py-14 lg:mt-16 sm:mt-18">
       {/* Progress bar */}
       <ScrollProgressBar />
 
