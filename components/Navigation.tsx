@@ -100,7 +100,7 @@ export default function Navigation() {
         }`}
         role="banner">
         <div
-          className={`container mx-auto flex items-center justify-between max-w-s md:max-w-3xl md:border rounded-lg px-2 md:px-8  shadow-slate-800 dark:md:border-zinc-900 shadow-md ${
+          className={`container mx-auto flex items-center justify-evenly md:justify-between max-w-s md:max-w-3xl md:border rounded-lg px-2 md:px-8  shadow-slate-800 dark:md:border-zinc-900 shadow-md ${
             isScrolled ? "md:pr-14" : ""
           }`}>
           {/* <Link
@@ -189,8 +189,9 @@ export default function Navigation() {
             </motion.button>
           </div>
 
+          {/* Mobile navigation */}
           <nav
-            className="flex md:hidden items-center space-x-6 font-semibold px-10"
+            className="flex md:hidden items-center gap-2 font-semibold px-2"
             role="navigation"
             aria-label="Mobile navigation">
             {links
