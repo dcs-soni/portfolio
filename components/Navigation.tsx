@@ -13,8 +13,8 @@ import {
   UserRound,
   BriefcaseBusiness,
   SquareChevronRight,
-  OrbitIcon,
   Mail,
+  LandPlotIcon,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import ContactModal from "./ContactModal";
@@ -57,31 +57,35 @@ export default function Navigation() {
     {
       name: "Home",
       href: "#home",
-      logo: <Home className="h-4 w-4 inline-flex " />,
+      logo: <Home className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex " />,
     },
     {
       name: "About",
       href: "#about",
-      logo: <UserRound className="h-4 w-4 inline-flex" />,
+      logo: <UserRound className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex" />,
     },
     {
       name: "Experience",
       href: "#experience",
-      logo: <BriefcaseBusiness className="h-4 w-4 inline-flex" />,
+      logo: (
+        <BriefcaseBusiness className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex" />
+      ),
     },
     {
       name: "Projects",
       href: "#projects",
-      logo: <SquareChevronRight className="w-4 h-4 inline-flex" />,
+      logo: (
+        <SquareChevronRight className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex" />
+      ),
     },
     {
       name: "Space",
       href: `${RESUME_DATA.constants.space}`,
-      logo: <OrbitIcon className="w-4 h-4 inline-flex" />,
+      logo: <LandPlotIcon className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex" />,
     },
     {
       name: "Contact",
-      logo: <Mail className="w-4 h-4 inline-flex" />,
+      logo: <Mail className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex" />,
       onClick: () => setIsModalOpen(true),
     },
   ];
@@ -100,7 +104,7 @@ export default function Navigation() {
         }`}
         role="banner">
         <div
-          className={`container mx-auto flex items-center justify-evenly md:justify-between max-w-s md:max-w-3xl md:border rounded-lg px-2 md:px-8  shadow-slate-800 dark:md:border-zinc-900 shadow-md ${
+          className={`container mx-auto flex items-center py-1.5 justify-evenly md:justify-between max-w-s md:max-w-3xl md:border rounded-lg px-2 md:px-8  shadow-slate-800 dark:md:border-zinc-900 shadow-md ${
             isScrolled ? "md:pr-14" : ""
           }`}>
           {/* <Link
@@ -114,7 +118,7 @@ export default function Navigation() {
 
           {/* Desktop navigation */}
           <nav
-            className="hidden md:flex items-center space-x-6 font-semibold"
+            className="hidden md:flex items-center gap-8 font-semibold"
             role="navigation"
             aria-label="Main navigation">
             {links.map((link) =>
@@ -191,7 +195,7 @@ export default function Navigation() {
 
           {/* Mobile navigation */}
           <nav
-            className="flex md:hidden items-center gap-2 font-semibold px-2"
+            className="flex md:hidden items-center gap-4 font-semibold px-2"
             role="navigation"
             aria-label="Mobile navigation">
             {links
