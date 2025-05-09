@@ -213,7 +213,7 @@ export default function Navigation() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="text-xs flex items-center justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                    className="text-xs flex items-baseline justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
                     {link.logo}
                     {link.name}
                   </Link>
@@ -221,7 +221,7 @@ export default function Navigation() {
                   <button
                     key={link.name}
                     onClick={link.onClick}
-                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                    className="text-sm flex items-baseline text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
                     {link.logo}
                     {link.name}
                   </button>

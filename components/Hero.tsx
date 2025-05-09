@@ -30,7 +30,7 @@ export default function Hero() {
         /> */}
 
         <motion.h1
-          className="text-3xl md:text-5xl text-zinc-900 font-semibold dark:text-zinc-100 mb-2 tracking-wider"
+          className="text-3xl md:text-5xl text-zinc-900 font-bold dark:text-zinc-100 mb-2 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -49,14 +49,12 @@ export default function Hero() {
 
           {/* Available for hire section  */}
           <span className="absolute ml-2 px-3 py-[1px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full inline-flex items-center animate-slideIn opacity-100">
-            <span className=" text-[7px] md:text-[9px] font-medium tracking-widest text-white">
-              AVAILABLE FOR HIRE
-            </span>
+            <span className="hire-badge">AVAILABLE FOR HIRE</span>
           </span>
         </motion.p>
 
         <motion.h2
-          className="text-zinc-900 dark:text-zinc-300 text-3xl md:text-5xl lg:text-6xl font-light leading-tight my-10 tracking-wider"
+          className="text-zinc-900 dark:text-zinc-300 text-2xl md:text-5xl lg:text-5xl md:max-w-2xl font-semibold leading-tight mt-10 mb-16 tracking-wide"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -72,19 +70,15 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: false, amount: 0.2 }}>
-          <div className="space-y-4">
-            <h3 className="text-xl text-zinc-700 dark:text-zinc-400">
-              {RESUME_DATA.subHeadingOne}
-            </h3>
-            <p className="text-sm md:text-md text-zinc-700 dark:text-gray-400 leading-relaxed">
+          <div className="space-y-4 sub-heading-div ">
+            <h3 className="sub-heading">{RESUME_DATA.subHeadingOne}</h3>
+            <p className="text-xs md:text-base text-zinc-700 dark:text-gray-400 leading-relaxed">
               {RESUME_DATA.subTextOne}
             </p>
           </div>
-          <div className="space-y-4">
-            <h3 className="text-xl text-zinc-700 dark:text-zinc-400">
-              {RESUME_DATA.subHeadingTwo}
-            </h3>
-            <p className="text-sm md:text-md text-zinc-700 dark:text-gray-400 leading-relaxed">
+          <div className="space-y-4 sub-heading-div">
+            <h3 className="sub-heading">{RESUME_DATA.subHeadingTwo}</h3>
+            <p className="text-xs md:text-base text-zinc-700 dark:text-gray-400 leading-relaxed">
               {RESUME_DATA.subTextTwo}
             </p>
           </div>
@@ -96,13 +90,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
           viewport={{ once: false, amount: 0.2 }}>
-          <div className="flex flex-wrap gap-4 justify-start items-center">
+          <div className="flex flex-wrap gap-4 md:justify-start justify-center items-center">
             <Link
               onClick={() => setIsModalOpen(true)}
               href=""
               aria-label="Get in touch"
               role="button"
-              className="group inline-flex items-center justify-center text-sm border border-zinc-700 hover:text-zinc-100 hover:bg-zinc-900 dark:border-zinc-50 dark:hover:bg-white px-4 py-2 mr-1 md:px-8 md:py-4 md:mr-2  dark:hover:text-black transition-colors duration-300 ">
+              className="group inline-flex font-semibold items-center justify-center text-sm md:text-base border border-zinc-700 hover:text-zinc-100 hover:bg-zinc-900 dark:border-zinc-50 dark:hover:bg-white px-4 py-2 mr-1 md:px-8 md:py-4 md:mr-2  dark:hover:text-black transition-colors duration-300 ">
               Get in touch
               <ArrowRight
                 className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1"
@@ -113,13 +107,13 @@ export default function Hero() {
               href={RESUME_DATA.constants.space}
               aria-label="Explore my Space"
               role="button"
-              className="group inline-flex items-center justify-center text-sm px-4 py-2 mr-1 md:px-8 md:py-4 md:mt-0 bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300 m-0">
+              className="group inline-flex items-center justify-center text-sm md:text-base px-4 py-2 mr-1 md:px-8 md:py-4 md:mt-0 bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300 m-0">
               Explore my Space
             </Link>
           </div>
 
           <div
-            className="flex gap-2 items-center"
+            className="flex gap-2 items-center justify-center md:justify-end"
             role="navigation"
             aria-label="Social media links">
             {RESUME_DATA.contact.social.map(({ name }: { name: string }) => {
@@ -148,7 +142,8 @@ export default function Hero() {
         </motion.div>
       </div>
       <motion.div
-        className="absolute hidden md:block md:bottom-10 left-1/2 transform -translate-x-1/2"
+        // className="absolute  bottom-6  transform -translate-x-1/3 md:bottom-10 left-1/2  "
+        className="absolute inset-x-0 bottom-1 flex justify-center md:bottom-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{

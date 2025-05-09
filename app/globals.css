@@ -15,3 +15,47 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.sub-heading-div {
+  @apply border rounded-2xl p-4;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.dark .sub-heading-div {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.sub-heading {
+  @apply relative text-xl text-zinc-900 dark:text-zinc-300 font-semibold;
+}
+
+.sub-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 3rem;
+  height: 2px;
+  /* background: linear-gradient(to right, #3b82f6, #8b5cf6); */
+  /* background: linear-gradient(to right, #8b5cf6, rgba(59, 130, 246, 0));
+  border-radius: 3px; */
+  background: #8b5cf6;
+  clip-path: polygon(0 0, 100% 100%, 0% 100%);
+}
+
+.hire-badge {
+  @apply text-[7px] md:text-[9px] font-medium tracking-widest text-white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
