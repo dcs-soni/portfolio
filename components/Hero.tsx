@@ -16,7 +16,7 @@ export default function Hero() {
       id="home"
       aria-label="Introduction"
       role="region"
-      className="min-h-screen flex items-start justify-center pt-32 px-6 md:py-8 md:mt-14 lg:py-14 lg:mt-16 sm:mt-18">
+      className="min-h-screen flex items-start justify-center pt-28 px-6 md:py-8 md:mt-14 lg:py-14 lg:mt-16 sm:mt-18">
       {/* Progress bar */}
       <ScrollProgressBar />
 
@@ -54,7 +54,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.h2
-          className="text-zinc-900 dark:text-zinc-300 text-2xl md:text-5xl lg:text-5xl md:max-w-2xl font-semibold leading-tight mb-10 md:mt-10 md:mb-16 tracking-wide"
+          className="text-zinc-900 dark:text-zinc-300 text-2xl md:text-5xl lg:text-5xl md:max-w-2xl font-semibold leading-tight mb-6 md:mt-10 md:mb-16 tracking-wide"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
