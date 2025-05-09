@@ -13,7 +13,7 @@ export const RESUME_DATA = {
   subHeadingOne: "Full-Stack Development",
   subTextOne:
     "Crafting scalable web applications, solving real-world challenges, and constantly learning new technologies on the go.",
-  subHeadingTwo: "How I Make an Impact",
+  subHeadingTwo: "3+ Years of Impactful Work ",
   subTextTwo:
     "Experienced in full-stack development, async collaboration, and rapidly learning new technologies to build impactful solutions.",
 

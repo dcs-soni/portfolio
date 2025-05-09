@@ -36,15 +36,12 @@ html {
   left: 0;
   width: 3rem;
   height: 2px;
-  /* background: linear-gradient(to right, #3b82f6, #8b5cf6); */
-  /* background: linear-gradient(to right, #8b5cf6, rgba(59, 130, 246, 0));
-  border-radius: 3px; */
   background: #8b5cf6;
   clip-path: polygon(0 0, 100% 100%, 0% 100%);
 }
 
 .hire-badge {
-  @apply text-[7px] md:text-[9px] font-medium tracking-widest text-white;
+  @apply text-[7px] md:text-[9px] font-normal tracking-widest text-white;
   animation: pulse 2s infinite;
 }
 

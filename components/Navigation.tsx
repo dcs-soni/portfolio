@@ -14,7 +14,7 @@ import {
   BriefcaseBusiness,
   SquareChevronRight,
   Mail,
-  LandPlotIcon,
+  LayoutGridIcon,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import ContactModal from "./ContactModal";
@@ -57,35 +57,33 @@ export default function Navigation() {
     {
       name: "Home",
       href: "#home",
-      logo: <Home className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex " />,
+      logo: <Home className="h-3 w-3 md:h-4 md:w-4 inline-flex " />,
     },
     {
       name: "About",
       href: "#about",
-      logo: <UserRound className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex" />,
+      logo: <UserRound className="h-3 w-3 md:h-4 md:w-4 inline-flex" />,
     },
     {
       name: "Experience",
       href: "#experience",
-      logo: (
-        <BriefcaseBusiness className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex" />
-      ),
+      logo: <BriefcaseBusiness className="h-3 w-3 md:h-4 md:w-4 inline-flex" />,
     },
     {
       name: "Projects",
       href: "#projects",
       logo: (
-        <SquareChevronRight className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex" />
+        <SquareChevronRight className="h-3 w-3 md:h-4 md:w-4 inline-flex" />
       ),
     },
     {
       name: "Space",
       href: `${RESUME_DATA.constants.space}`,
-      logo: <LandPlotIcon className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex" />,
+      logo: <LayoutGridIcon className="h-3 w-3 md:h-4 md:w-4 inline-flex" />,
     },
     {
       name: "Contact",
-      logo: <Mail className="h-3.5 w-3.5 md:h-4 md:w-4 inline-flex" />,
+      logo: <Mail className="h-3 w-3 md:h-4 md:w-4 inline-flex" />,
       onClick: () => setIsModalOpen(true),
     },
   ];
@@ -213,7 +211,7 @@ export default function Navigation() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="text-xs flex items-baseline justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                    className="text-xs flex items-center justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
                     {link.logo}
                     {link.name}
                   </Link>
