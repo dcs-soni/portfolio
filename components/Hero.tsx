@@ -40,7 +40,7 @@ export default function Hero() {
 
         <motion.p
           role="doc-subtitle"
-          className="relative text-xs md:text-sm text-zinc-700 dark:text-zinc-400 mb-6 tracking-widest"
+          className="relative text-xs font-medium md:text-sm text-zinc-700 dark:text-zinc-400 mb-6 tracking-widest"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -96,7 +96,7 @@ export default function Hero() {
               href=""
               aria-label="Get in touch"
               role="button"
-              className="group inline-flex font-semibold items-center justify-center text-sm md:text-base border border-zinc-700 hover:text-zinc-100 hover:bg-zinc-900 dark:border-zinc-50 dark:hover:bg-white px-4 py-2 mr-1 md:px-8 md:py-4 md:mr-2  dark:hover:text-black transition-colors duration-300 ">
+              className="group inline-flex font-semibold items-center justify-center text-sm md:text-base border border-zinc-700 hover:text-zinc-100 rounded-md hover:bg-zinc-900 dark:border-zinc-50 dark:hover:bg-white px-4 py-3 mr-1 md:px-8 md:py-4 md:mr-2  dark:hover:text-black transition-colors duration-300 ">
               Get in touch
               <ArrowRight
                 className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1"
@@ -107,7 +107,7 @@ export default function Hero() {
               href={RESUME_DATA.constants.space}
               aria-label="Explore my Space"
               role="button"
-              className="group inline-flex items-center justify-center text-sm md:text-base px-4 py-2 mr-1 md:px-8 md:py-4 md:mt-0 bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300 m-0">
+              className="group inline-flex font-semibold items-center justify-center text-sm md:text-base px-4 py-3 mr-1 md:px-8 md:py-4 md:mt-0 border border-zinc-700 dark:border-zinc-700 rounded-md bg-white/5 bg-zinc-200 hover:bg-zinc-400 hover:bg-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300 m-0">
               Explore my Space
             </Link>
           </div>
@@ -142,8 +142,7 @@ export default function Hero() {
         </motion.div>
       </div>
       <motion.div
-        // className="absolute  bottom-6  transform -translate-x-1/3 md:bottom-10 left-1/2  "
-        className="absolute inset-x-0 bottom-1 flex justify-center md:bottom-10"
+        className="absolute hidden md:block md:bottom-10 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
