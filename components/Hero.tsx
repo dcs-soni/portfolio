@@ -30,7 +30,7 @@ export default function Hero() {
         /> */}
 
         <motion.h1
-          className="text-3xl md:text-5xl text-zinc-900 font-semibold dark:text-zinc-100 mb-2 tracking-wider"
+          className="text-3xl md:text-5xl text-zinc-900 font-bold dark:text-zinc-100 mb-2 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -56,7 +56,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.h2
-          className="text-zinc-900 dark:text-zinc-300 text-3xl md:text-5xl lg:text-6xl font-light leading-tight my-10 tracking-wider"
+          className="text-zinc-900 dark:text-zinc-300 text-3xl md:text-5xl lg:text-5xl md:max-w-2xl font-semibold leading-tight mt-8 mb-16 tracking-wide"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -72,19 +72,15 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: false, amount: 0.2 }}>
-          <div className="space-y-4">
-            <h3 className="text-xl text-zinc-700 dark:text-zinc-400">
-              {RESUME_DATA.subHeadingOne}
-            </h3>
-            <p className="text-sm md:text-md text-zinc-700 dark:text-gray-400 leading-relaxed">
+          <div className="space-y-4 sub-heading-div ">
+            <h3 className="sub-heading">{RESUME_DATA.subHeadingOne}</h3>
+            <p className="text-xs md:text-base text-zinc-700 dark:text-gray-400 leading-relaxed">
               {RESUME_DATA.subTextOne}
             </p>
           </div>
-          <div className="space-y-4">
-            <h3 className="text-xl text-zinc-700 dark:text-zinc-400">
-              {RESUME_DATA.subHeadingTwo}
-            </h3>
-            <p className="text-sm md:text-md text-zinc-700 dark:text-gray-400 leading-relaxed">
+          <div className="space-y-4 sub-heading-div">
+            <h3 className="sub-heading">{RESUME_DATA.subHeadingTwo}</h3>
+            <p className="text-xs md:text-base text-zinc-700 dark:text-gray-400 leading-relaxed">
               {RESUME_DATA.subTextTwo}
             </p>
           </div>
