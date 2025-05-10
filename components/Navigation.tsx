@@ -102,18 +102,7 @@ export default function Navigation() {
         }`}
         role="banner">
         <div
-          className={`container mx-auto flex items-center py-1.5 justify-evenly md:justify-between max-w-s md:max-w-3xl md:border rounded-lg px-2 md:px-8  shadow-slate-800 dark:md:border-zinc-900 shadow-md ${
-            isScrolled ? "md:pr-14" : ""
-          }`}>
-          {/* <Link
-            href="#"
-            className="hidden md:hidden text-lg font-medium"
-            aria-label="Go to home">
-            <motion.span className="font-bold text-zinc-600 dark:text-zinc-400 transition-colors duration-200 hover:bg-clip-text hover:text-transparent dark:hover:text-transparent hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500">
-              DS
-            </motion.span>
-          </Link> */}
-
+          className={`container mx-auto flex items-center py-1.5 justify-between max-w-s md:max-w-3xl md:border rounded-lg px-2 md:px-8 shadow-slate-800 dark:md:border-zinc-900 shadow-md`}>
           {/* Desktop navigation */}
           <nav
             className="hidden md:flex items-center gap-8 font-semibold"
@@ -130,7 +119,7 @@ export default function Navigation() {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="text-xs flex items-center justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                  className="text-xs flex items-center justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">
                   {link.logo}
                   {link.name}
                 </Link>
@@ -138,7 +127,7 @@ export default function Navigation() {
                 <button
                   key={link.name}
                   onClick={link.onClick}
-                  className="text-xs flex items-center justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors">
+                  className="text-xs flex items-center justify-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white ">
                   {link.logo}
                   {link.name}
                 </button>
@@ -146,50 +135,61 @@ export default function Navigation() {
             )}
           </nav>
 
-          <div className="md:flex items-center gap-2">
+          <motion.div
+            layout
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:flex items-center gap-2 ml-auto">
             {mounted && (
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={toggleTheme}
-                aria-label={`Switch to ${
-                  theme === "dark" ? "light" : "dark"
-                } mode`}
-                className="p-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors duration-200 ease-in-out">
-                {theme === "dark" ? (
-                  <Sun className="w-5 h-5" aria-hidden="true" />
-                ) : (
-                  <Moon className="w-5 h-5" aria-hidden="true" />
-                )}
-              </motion.button>
+              <motion.div
+                layout
+                transition={{ duration: 0.3, ease: "easeInOut" }}>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={toggleTheme}
+                  aria-label={`Switch to ${
+                    theme === "dark" ? "light" : "dark"
+                  } mode`}
+                  className="p-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors duration-200 ease-in-out">
+                  {theme === "dark" ? (
+                    <Sun className="w-5 h-5" aria-hidden="true" />
+                  ) : (
+                    <Moon className="w-5 h-5" aria-hidden="true" />
+                  )}
+                </motion.button>
+              </motion.div>
             )}
 
             <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className={`hidden md:flex p-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-all justify-center items-center duration-100 ease-in-out relative`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="hidden md:flex p-2 rounded-full text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors duration-200 ease-in-out relative items-center justify-center"
               aria-label="Open command menu">
-              <Command
-                className={`transition-all duration-700 ease-in-out ${
-                  isScrolled
-                    ? "w-4 h-4 translate-y-15 "
-                    : "w-4 h-4 -translate-y-1/3"
-                }`}
-                aria-hidden="true"
-              />
-
-              <kbd
-                className={`text-xs whitespace-nowrap transition-all duration-500 ease-in-out absolute left-1/2 -translate-x-1/2 opacity-100 ${
-                  isScrolled
-                    ? "translate-y-15 translate-x-4"
-                    : "translate-y-2.5 text-[0.6rem]"
+              <motion.div
+                layout
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`flex items-center justify-center ${
+                  isScrolled ? "flex-row gap-1" : "flex-col"
                 }`}>
-                Ctrl K
-              </kbd>
+                <motion.div layout>
+                  <Command
+                    className={`${isScrolled ? "w-5 h-5" : "w-4 h-4"}`}
+                    aria-hidden="true"
+                  />
+                </motion.div>
+
+                <motion.kbd
+                  layout
+                  className={` leading-none tracking-tight ${
+                    isScrolled ? "text-[0.8rem]" : "text-[0.6rem]"
+                  }`}>
+                  Ctrl K
+                </motion.kbd>
+              </motion.div>
 
               <CommandMenu />
             </motion.button>
-          </div>
+          </motion.div>
 
           {/* Mobile navigation */}
           <nav
