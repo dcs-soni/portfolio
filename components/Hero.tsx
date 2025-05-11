@@ -70,13 +70,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: false, amount: 0.2 }}>
-          <div className="space-y-4 sub-heading-div ">
+          <div className="space-y-4 sub-heading-div light">
             <h3 className="sub-heading">{RESUME_DATA.subHeadingOne}</h3>
             <p className="text-xs md:text-base text-zinc-700 dark:text-gray-400 leading-relaxed">
               {RESUME_DATA.subTextOne}
             </p>
           </div>
-          <div className="space-y-4 sub-heading-div">
+          <div className="space-y-4 sub-heading-div light">
             <h3 className="sub-heading">{RESUME_DATA.subHeadingTwo}</h3>
             <p className="text-xs md:text-base text-zinc-700 dark:text-gray-400 leading-relaxed">
               {RESUME_DATA.subTextTwo}

@@ -19,12 +19,13 @@ html {
 .sub-heading-div {
   @apply border rounded-2xl p-4;
   background-color: rgba(255, 255, 255, 0.03);
-}
-
-.dark .sub-heading-div {
   border-color: rgba(255, 255, 255, 0.06);
 }
 
+.light .sub-heading-div {
+  background-color: rgba(212, 209, 209, 0.1);
+  border-color: rgba(22, 22, 22, 0.1);
+}
 .sub-heading {
   @apply relative text-xl text-zinc-900 dark:text-zinc-300 font-semibold;
 }
