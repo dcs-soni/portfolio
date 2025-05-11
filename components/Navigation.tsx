@@ -138,7 +138,7 @@ export default function Navigation() {
           <motion.div
             layout
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:flex items-center gap-2 ml-auto">
+            className="md:flex items-center gap-2 md:ml-auto">
             {mounted && (
               <motion.div
                 layout
