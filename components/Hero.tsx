@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import ContactModal from "@/components/ContactModal";
 import { RESUME_DATA } from "@/data/RESUME_DATA";
@@ -21,13 +22,13 @@ export default function Hero() {
       <ScrollProgressBar />
 
       <div className="max-w-5xl">
-        {/* <Image
-          src="/me.png"
+        <Image
+          src="/me.jpg"
           alt="Profile"
           width={150}
           height={300}
-          className="absolute md:top-22 md:right-60 top-22 right-12 w-16 h-16 md:h-40 md:w-40 rounded-full  shadow-lg"
-        /> */}
+          className="absolute md:top-22 md:right-64 top-22 right-6 rounded-full md:rounded-3xl w-16 h-18 md:h-44 md:w-44 shadow-lg"
+        />
 
         <motion.h1
           className="text-3xl md:text-5xl text-zinc-900 font-bold dark:text-zinc-100 mb-2 tracking-wider"
@@ -54,7 +55,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.h2
-          className="text-zinc-900 dark:text-zinc-300 text-2xl md:text-5xl lg:text-5xl md:max-w-2xl font-semibold leading-tight mb-6 md:mt-10 md:mb-16 tracking-wide"
+          className="text-zinc-900 dark:text-zinc-300 text-xl md:text-5xl lg:text-5xl md:max-w-2xl font-semibold leading-tight mt-10 mb-6 md:mt-10 md:mb-16 tracking-wide"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
