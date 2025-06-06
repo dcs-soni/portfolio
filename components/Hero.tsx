@@ -63,7 +63,7 @@ export default function Hero() {
               alt="Profile"
               width={150}
               height={300}
-              className=" rounded-2xl w-20 h-14 md:h-44 md:w-44 shadow-lg"
+              className=" rounded-2xl w-20 h-20 md:h-44 md:w-44 shadow-lg"
             />
           </div>
         </div>
