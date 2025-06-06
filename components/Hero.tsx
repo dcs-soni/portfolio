@@ -49,7 +49,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.h2
-              className="text-zinc-900 dark:text-zinc-300 text-xl md:text-5xl lg:text-5xl md:max-w-2xl font-semibold leading-tight mt-10 mb-6 md:mt-10 md:mb-16 tracking-wide"
+              className="text-zinc-900 dark:text-zinc-300 text-xl md:text-5xl lg:text-5xl md:max-w-2xl font-semibold leading-tight mt-10 mb-6 md:mt-10 md:mb-16 tracking-wider"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -63,7 +63,7 @@ export default function Hero() {
               alt="Profile"
               width={150}
               height={300}
-              className=" rounded-2xl w-20 h-20 md:h-44 md:w-44 shadow-lg"
+              className=" rounded-full md:rounded-2xl w-28 h-20 md:h-44 md:w-44 shadow-lg"
             />
           </div>
         </div>
