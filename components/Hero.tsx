@@ -22,46 +22,51 @@ export default function Hero() {
       <ScrollProgressBar />
 
       <div className="max-w-5xl">
-        <Image
-          src="/me.jpg"
-          alt="Profile"
-          width={150}
-          height={300}
-          className="absolute md:top-22 md:right-64 top-22 right-6 rounded-full md:rounded-3xl w-16 h-18 md:h-44 md:w-44 shadow-lg"
-        />
+        <div className="flex flex-row justify-between">
+          <div>
+            <motion.h1
+              className="text-3xl md:text-5xl text-zinc-900 font-bold dark:text-zinc-100 mb-2 tracking-wider"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: false, amount: 0.2 }}>
+              {RESUME_DATA.name}
+            </motion.h1>
 
-        <motion.h1
-          className="text-3xl md:text-5xl text-zinc-900 font-bold dark:text-zinc-100 mb-2 tracking-wider"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: false, amount: 0.2 }}>
-          {RESUME_DATA.name}
-        </motion.h1>
+            <motion.p
+              role="doc-subtitle"
+              className="relative text-xs font-medium md:text-sm text-zinc-700 dark:text-zinc-400 mb-6 tracking-widest"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: false, amount: 0.2 }}>
+              {RESUME_DATA.title}
 
-        <motion.p
-          role="doc-subtitle"
-          className="relative text-xs font-medium md:text-sm text-zinc-700 dark:text-zinc-400 mb-6 tracking-widest"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: false, amount: 0.2 }}>
-          {RESUME_DATA.title}
+              {/* Available for hire section  */}
+              <span className="absolute ml-2 px-3 py-[1px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full inline-flex items-center animate-slideIn opacity-100">
+                <span className="hire-badge">AVAILABLE FOR HIRE</span>
+              </span>
+            </motion.p>
 
-          {/* Available for hire section  */}
-          <span className="absolute ml-2 px-3 py-[1px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full inline-flex items-center animate-slideIn opacity-100">
-            <span className="hire-badge">AVAILABLE FOR HIRE</span>
-          </span>
-        </motion.p>
-
-        <motion.h2
-          className="text-zinc-900 dark:text-zinc-300 text-xl md:text-5xl lg:text-5xl md:max-w-2xl font-semibold leading-tight mt-10 mb-6 md:mt-10 md:mb-16 tracking-wide"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: false, amount: 0.2 }}>
-          {RESUME_DATA.heroHeading}
-        </motion.h2>
+            <motion.h2
+              className="text-zinc-900 dark:text-zinc-300 text-xl md:text-5xl lg:text-5xl md:max-w-2xl font-semibold leading-tight mt-10 mb-6 md:mt-10 md:mb-16 tracking-wide"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}>
+              {RESUME_DATA.heroHeading}
+            </motion.h2>
+          </div>
+          <div>
+            <Image
+              src="/me.jpg"
+              alt="Profile"
+              width={150}
+              height={300}
+              className=" rounded-2xl w-20 h-14 md:h-44 md:w-44 shadow-lg"
+            />
+          </div>
+        </div>
 
         <motion.div
           role="region"
