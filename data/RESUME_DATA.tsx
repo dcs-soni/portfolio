@@ -18,7 +18,7 @@ export const RESUME_DATA = {
     "Experienced in full-stack development, async collaboration, and rapidly learning new technologies to build impactful solutions.",
 
   contact: {
-    email: "divyanshusoni52@gmail.com",
+    email: "hello@divyanshusoni.com",
     social: [
       {
         name: "GitHub",
